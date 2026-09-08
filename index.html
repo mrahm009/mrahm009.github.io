@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Md Mahfuzur Rahman — Wearable cardiovascular sensing</title>
+<meta name="description" content="Md Mahfuzur Rahman builds wearable cardiovascular sensing systems end to end — soft microfluidic tactile sensors, custom analog electronics, and the signal-processing algorithms that make out-of-clinic measurement trustworthy. PhD candidate, Old Dominion University.">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Md Mahfuzur Rahman — Wearable cardiovascular sensing">
+<meta property="og:description" content="Bridging laboratory-grade clinical measurement and accessible, wearable health technology — from microfabrication to algorithms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f6f2;
+    --ink:#16201f;
+    --ink-soft:#42504e;
+    --ink-faint:#7c8785;
+    --line:#d9d6cd;
+    --line-soft:#e7e4dc;
+    --trace:#0f8a6f;      /* oscilloscope / arterial-trace green */
+    --trace-deep:#0a5f4d;
+    --panel:#eeece5;
+    --white:#ffffff;
+    --maxw:1080px;
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Inter",system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;margin:0}
+  ::selection{background:var(--trace);color:#fff}
+
+  .skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:.6rem 1rem;z-index:100}
+  .skip:focus{left:8px;top:8px}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  /* ---------- nav ---------- */
+  header.nav{position:sticky;top:0;z-index:40;background:rgba(247,246,242,.86);
+    backdrop-filter:blur(9px);border-bottom:1px solid var(--line)}
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 28px;
+    display:flex;align-items:baseline;justify-content:space-between;gap:20px}
+  .brand{font-family:var(--serif);font-size:1.05rem;font-weight:600;white-space:nowrap}
+  .brand span{color:var(--ink-faint);font-family:var(--sans);font-size:.72rem;
+    font-weight:500;display:block;letter-spacing:.02em;margin-top:1px}
+  nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0;font-size:.82rem}
+  nav a{color:var(--ink-soft);text-decoration:none;padding:4px 0;border-bottom:1px solid transparent}
+  nav a:hover{color:var(--trace-deep);border-bottom-color:var(--trace)}
+  .nav-toggle{display:none}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .pulse-bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.5}
+  .hero-inner{max-width:var(--maxw);margin:0 auto;padding:88px 28px 72px;position:relative}
+  .eyebrow{font-size:.8rem;color:var(--trace-deep);font-weight:600;margin-bottom:22px}
+  .hero h1{font-size:clamp(2.3rem,5.4vw,3.9rem);line-height:1.04;max-width:16ch}
+  .hero .lede{font-family:var(--serif);font-style:italic;font-size:clamp(1.15rem,2.4vw,1.5rem);
+    color:var(--ink-soft);margin:26px 0 0;max-width:34ch;line-height:1.35}
+  .hero p.sub{margin:30px 0 0;max-width:56ch;color:var(--ink-soft);font-size:1.02rem}
+  .idcard{display:flex;gap:20px;align-items:center;margin-top:44px;flex-wrap:wrap}
+  .idcard img{width:74px;height:74px;border-radius:50%;object-fit:cover;
+    background:var(--panel);border:1px solid var(--line)}
+  .idcard .who{font-size:.95rem;line-height:1.45}
+  .idcard .who strong{font-family:var(--serif);font-size:1.08rem;font-weight:600;display:block}
+  .idcard .who span{color:var(--ink-faint)}
+  .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+  .links a{font-size:.83rem;text-decoration:none;padding:8px 15px;border:1px solid var(--line);
+    border-radius:2px;color:var(--ink);background:var(--white);transition:.15s}
+  .links a:hover{border-color:var(--trace);color:var(--trace-deep)}
+  .links a.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .links a.primary:hover{background:var(--trace-deep);border-color:var(--trace-deep);color:#fff}
+
+  /* ---------- at a glance ---------- */
+  .glance{border-bottom:1px solid var(--line);background:var(--panel)}
+  .glance-grid{max-width:var(--maxw);margin:0 auto;padding:0 28px;
+    display:grid;grid-template-columns:repeat(6,1fr)}
+  .stat{padding:22px 18px;border-left:1px solid var(--line-soft)}
+  .stat:first-child{border-left:none}
+  .stat .n{font-family:var(--serif);font-size:1.5rem;font-weight:600;color:var(--trace-deep);line-height:1}
+  .stat .l{font-size:.74rem;color:var(--ink-faint);margin-top:7px;line-height:1.3}
+
+  /* ---------- section frame ---------- */
+  section{padding:76px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+  .sec-num{font-family:var(--serif);font-size:.95rem;color:var(--trace);font-weight:600;
+    font-feature-settings:"tnum";width:2.2rem;flex:none}
+  .sec-kicker{font-size:.78rem;color:var(--ink-faint);margin-left:auto;font-weight:500}
+  h2{font-size:clamp(1.6rem,3.4vw,2.3rem);line-height:1.1;padding-left:calc(2.2rem + 16px)}
+  .sec-body{padding-left:calc(2.2rem + 16px);margin-top:22px;max-width:64ch}
+  .sec-body p{margin:0 0 18px;color:var(--ink-soft)}
+  .sec-body p strong{color:var(--ink);font-weight:600}
+
+  /* ---------- research threads ---------- */
+  .threads{margin-top:12px;padding-left:calc(2.2rem + 16px)}
+  .thread{padding:30px 0;border-top:1px solid var(--line-soft);display:grid;
+    grid-template-columns:auto 1fr;gap:26px}
+  .thread:first-child{border-top:none}
+  .thread .tno{font-family:var(--serif);font-size:1.05rem;color:var(--trace);font-weight:600;
+    padding-top:3px;font-feature-settings:"tnum"}
+  .thread h3{font-size:1.28rem;margin-bottom:4px}
+  .thread .meta{font-size:.76rem;color:var(--ink-faint);margin-bottom:12px}
+  .thread p{margin:0;color:var(--ink-soft);font-size:.98rem;max-width:60ch}
+  .thread .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+  .thread .tags span{font-size:.72rem;color:var(--trace-deep);background:var(--panel);
+    border:1px solid var(--line-soft);padding:3px 9px;border-radius:2px}
+
+  /* ---------- publications ---------- */
+  .pubs{padding-left:calc(2.2rem + 16px);margin-top:12px}
+  .yeargroup{margin-top:30px}
+  .yeargroup:first-child{margin-top:6px}
+  .yr{font-family:var(--serif);font-size:1.05rem;color:var(--ink-faint);font-weight:600;
+    padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:6px}
+  .pub{padding:18px 0;border-bottom:1px solid var(--line-soft)}
+  .pub .venue{font-size:.76rem;color:var(--trace-deep);font-weight:600;margin-bottom:5px}
+  .pub h3{font-size:1.06rem;font-family:var(--sans);font-weight:600;line-height:1.4;margin-bottom:5px}
+  .pub .auth{font-size:.86rem;color:var(--ink-faint);line-height:1.5}
+  .pub .auth b{color:var(--ink-soft);font-weight:600}
+  .pub .tag{display:inline-block;font-size:.68rem;border:1px solid var(--line);border-radius:2px;
+    padding:1px 7px;color:var(--ink-faint);margin-left:8px;vertical-align:middle}
+  .bibtoggle{margin-top:10px;font-size:.76rem;color:var(--trace-deep);background:none;
+    border:none;cursor:pointer;padding:0;font-family:var(--sans);border-bottom:1px dotted var(--trace)}
+  .bib{display:none;margin-top:12px;background:var(--ink);color:#d7e7e2;border-radius:3px;
+    padding:16px;font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:.74rem;
+    line-height:1.55;overflow-x:auto;white-space:pre}
+  .bib.open{display:block}
+
+  /* ---------- audiences ---------- */
+  .aud{padding-left:calc(2.2rem + 16px);margin-top:22px;display:grid;
+    grid-template-columns:repeat(2,1fr);gap:14px;max-width:none}
+  .aud a{display:block;text-decoration:none;border:1px solid var(--line);background:var(--white);
+    padding:22px;border-radius:3px;transition:.15s}
+  .aud a:hover{border-color:var(--trace);transform:translateY(-2px)}
+  .aud .role{font-family:var(--serif);font-size:1.12rem;font-weight:600;margin-bottom:5px}
+  .aud .desc{font-size:.86rem;color:var(--ink-soft);line-height:1.5}
+  .aud .go{font-size:.76rem;color:var(--trace-deep);font-weight:600;margin-top:12px;display:inline-block}
+
+  /* ---------- teaching ---------- */
+  .teach-list{padding-left:calc(2.2rem + 16px);margin-top:20px;max-width:64ch}
+  .teach-list .row{display:flex;justify-content:space-between;gap:20px;padding:11px 0;
+    border-bottom:1px solid var(--line-soft);font-size:.92rem}
+  .teach-list .row .c{color:var(--ink)}
+  .teach-list .row .w{color:var(--ink-faint);font-size:.82rem;text-align:right;flex:none}
+
+  /* ---------- contact ---------- */
+  .contact{background:var(--ink);color:var(--paper);border-bottom:none}
+  .contact h2{color:#fff}
+  .contact .sec-num{color:var(--trace)}
+  .contact .sec-body{max-width:60ch}
+  .contact .sec-body p{color:#bcc9c6}
+  .contact a.mail{color:#fff;font-family:var(--serif);font-size:clamp(1.3rem,3vw,2rem);
+    text-decoration:none;border-bottom:2px solid var(--trace)}
+  .contact .cols{padding-left:calc(2.2rem + 16px);margin-top:36px;display:grid;
+    grid-template-columns:1fr 1fr;gap:30px;font-size:.9rem}
+  .contact .cols h4{font-family:var(--sans);font-size:.74rem;color:var(--trace);
+    text-transform:none;font-weight:600;margin:0 0 10px}
+  .contact .cols a{color:#cdd8d5;text-decoration:none;display:block;padding:3px 0}
+  .contact .cols a:hover{color:#fff}
+  .contact .cols p{color:#9fb0ac;margin:0;line-height:1.6}
+
+  footer{background:var(--ink);color:#7c8f8b;font-size:.78rem;padding:26px 28px;text-align:center}
+
+  @media(max-width:820px){
+    .glance-grid{grid-template-columns:repeat(3,1fr)}
+    .stat:nth-child(4){border-left:none}
+    .aud{grid-template-columns:1fr}
+    .contact .cols{grid-template-columns:1fr}
+  }
+  @media(max-width:640px){
+    body{font-size:16px}
+    .nav-toggle{display:block;background:none;border:1px solid var(--line);border-radius:3px;
+      padding:6px 10px;font-size:.8rem;cursor:pointer;color:var(--ink)}
+    nav ul{display:none;position:absolute;top:100%;right:0;left:0;background:var(--paper);
+      flex-direction:column;gap:0;border-bottom:1px solid var(--line);padding:8px 28px}
+    nav ul.open{display:flex}
+    nav li{border-top:1px solid var(--line-soft)}
+    nav ul a{display:block;padding:12px 0}
+    .glance-grid{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(3),.stat:nth-child(5){border-left:none}
+    h2,.sec-body,.threads,.pubs,.aud,.teach-list,.contact .cols{padding-left:0}
+    .sec-head{padding-left:0}
+    .thread{grid-template-columns:1fr;gap:8px}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">Md Mahfuzur Rahman<span>ODU · Cardiovascular Sensing</span></div>
+    <nav>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
+      <ul id="navlist">
+        <li><a href="#problem">Focus</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#papers">Publications</a></li>
+        <li><a href="#cvs">CV &amp; Résumé</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" style="border-bottom:1px solid var(--line);padding:0">
+    <svg class="pulse-bg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path id="ecg" fill="none" stroke="var(--trace)" stroke-width="1.6" opacity="0.55"
+        d="M0,210 L180,210 200,210 210,205 220,214 232,150 244,262 256,196 268,210 300,210
+           420,210 440,210 450,205 460,214 472,150 484,262 496,196 508,210 540,210
+           660,210 680,210 690,205 700,214 712,150 724,262 736,196 748,210 780,210
+           900,210 920,210 930,205 940,214 952,150 964,262 976,196 988,210 1020,210
+           1140,210 1200,210"/>
+    </svg>
+    <div class="hero-inner">
+      <div class="eyebrow">Wearable cardiovascular biosensing · ODU</div>
+      <h1>Measuring the pulse where the patient actually lives.</h1>
+      <p class="lede">A clinic-grade arterial signal is only useful if you can capture it outside the clinic — and trust it.</p>
+      <p class="sub">I build noninvasive cardiovascular sensing systems across the whole stack: soft microfluidic
+        tactile sensors fabricated by hand, the custom analog electronics that read them, and the time-frequency
+        algorithms that pull real arterial parameters out of noisy, moving, real-world signals. The through-line of
+        my work is <strong>making a measurement honest</strong> — separating what the artery is doing from what the
+        motion, the sensor, and the body are adding on top.</p>
+
+      <div class="idcard">
+        <img src="images/portrait.jpg" alt="Md Mahfuzur Rahman" onerror="this.style.display='none'">
+        <div class="who">
+          <strong>Md Mahfuzur Rahman</strong>
+          <span>PhD candidate, Mechanical &amp; Aerospace Engineering<br>Old Dominion University · Advisor: Dr. Zhili Hao</span>
+        </div>
+      </div>
+
+      <div class="links">
+        <a class="primary" href="#cvs">CV &amp; Résumé</a>
+        <a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://orcid.org/" target="_blank" rel="noopener">ORCID</a>
+        <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:mrahm009@odu.edu">Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AT A GLANCE -->
+  <div class="glance">
+    <div class="glance-grid">
+      <div class="stat"><div class="n">6+</div><div class="l">Years research experience</div></div>
+      <div class="stat"><div class="n">6</div><div class="l">Peer-reviewed papers (4 first-author)</div></div>
+      <div class="stat"><div class="n">NSF</div><div class="l">Grant #1936005</div></div>
+      <div class="stat"><div class="n">1.5&nbsp;mm</div><div class="l">Sensor spatial resolution</div></div>
+      <div class="stat"><div class="n">Aug 2026</div><div class="l">PhD conferral</div></div>
+      <div class="stat"><div class="n">3.87</div><div class="l">Doctoral GPA / 4.0</div></div>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section id="problem">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">01</span><span class="sec-kicker">The focus</span></div>
+      <h2>The problem I work on</h2>
+      <div class="sec-body">
+        <p>Cardiovascular disease is monitored with instruments that live in hospitals: Doppler ultrasound,
+          applanation tonometry, arterial catheters. They are accurate and they stay put. Meanwhile the moments
+          that matter for a heart patient — the recovery after exertion, the drift over weeks of rehabilitation —
+          happen at home, where none of those instruments can follow.</p>
+        <p>A wearable sensor can go there, but it inherits problems the clinic never had. The person moves. The
+          skin, the tape, and the sensor add their own mechanics to the signal. Body composition changes what the
+          waveform even looks like. A device that reports a clean-looking number under these conditions is often
+          reporting the artifact, not the artery.</p>
+        <p>So my research question is not only how to <strong>acquire</strong> an arterial pulse noninvasively, but
+          how to <strong>tell the true signal apart from everything the measurement adds to it</strong> — through
+          the sensor design, the electronics, and the signal processing together, because the honesty has to be
+          built at every layer or it is not there at all.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02</span><span class="sec-kicker">Four threads, one program</span></div>
+      <h2>What I build, and what each thread found</h2>
+      <div class="threads">
+
+        <div class="thread">
+          <div class="tno">i</div>
+          <div>
+            <h3>The sensor, made by hand</h3>
+            <div class="meta">2019–present · NSF #1936005 · Microfabrication</div>
+            <p>I fabricate soft-polymer (PDMS) microfluidic tactile sensors end to end: photolithographic Au/Cr
+              electrode patterning on Pyrex, SU-8 microchannel molds, PDMS casting and plasma bonding — reaching
+              1.5&nbsp;mm transducer spacing and 0.2&nbsp;µm displacement resolution. Later I moved to 3D-printed
+              molds, which cut the fabrication cycle by removing spin-coating, UV exposure, and baking while holding
+              geometric fidelity. The device is paired with custom KiCad analog front-end PCBs — transimpedance
+              amplifiers, demodulation, multi-transducer readout into NI DAQ and LabVIEW.</p>
+            <div class="tags"><span>Photolithography</span><span>PDMS soft lithography</span><span>KiCad AFE</span><span>NI DAQ / LabVIEW</span></div>
+          </div>
+        </div>
+
+        <div class="thread">
+          <div class="tno">ii</div>
+          <div>
+            <h3>Modeling the motion artifact instead of hiding it</h3>
+            <div class="meta">2021–2025 · Sensors / Biosensors 2025 · Analytical modeling</div>
+            <p>Rather than filter motion artifacts away and hope, I built an analytical model of where they come
+              from — relating baseline drift and a newly defined set of time-varying system parameters to the
+              measured pulse. The model explains, mathematically, how the sensor–tissue system distorts the true
+              signal at rest and in motion. The point is the same as the rest of my work: a distortion you can
+              write down is a distortion you can separate out, rather than one that quietly corrupts the number.</p>
+            <div class="tags"><span>Motion-artifact model</span><span>Time-varying system parameters</span><span>Baseline drift</span></div>
+          </div>
+        </div>
+
+        <div class="thread">
+          <div class="tno">iii</div>
+          <div>
+            <h3>Pulling parameters out of a nonstationary signal</h3>
+            <div class="meta">2020–present · Dissertation · Time-frequency analysis</div>
+            <p>An arterial pulse is nonstationary — its harmonics move beat to beat — so ordinary spectral tools
+              blur exactly what matters. I develop MATLAB/Python pipelines built on EMD, complex demodulation, HVD,
+              wavelet transforms, and HHT, including hybrid masked EMD–HVD and CDM–HVD methods for instantaneous,
+              beat-by-beat parameter estimation. This is the core of my dissertation: recovering elasticity,
+              viscosity, PWV, and augmentation index as they actually change in time.</p>
+            <div class="tags"><span>EMD / HHT / HVD</span><span>Complex demodulation</span><span>Wavelets</span><span>Hybrid EMD–HVD</span></div>
+          </div>
+        </div>
+
+        <div class="thread">
+          <div class="tno">iv</div>
+          <div>
+            <h3>Proving it against the clinic</h3>
+            <div class="meta">2021–present · IRB-approved · Clinical validation</div>
+            <p>None of the above counts until it holds up against reference instruments on real patients. I design
+              and run IRB-approved human-subject studies — healthy volunteers, cardiac-rehabilitation patients at
+              Sentara, a heart-transplant case study — acquiring sensor data alongside Doppler ultrasound,
+              tonometry, and blood pressure, and validating derived parameters against those standards. This
+              includes a multi-visit study of how body composition (BMI) changes signal quality across radial and
+              carotid sites.</p>
+            <div class="tags"><span>IRB / human subjects</span><span>REDCap</span><span>Clinical reference validation</span><span>Cardiac rehab cohort</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="papers">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">03</span><span class="sec-kicker">6 peer-reviewed · 4 first-author</span></div>
+      <h2>Publications</h2>
+      <div class="pubs">
+
+        <div class="yeargroup">
+          <div class="yr">2026</div>
+          <div class="pub">
+            <div class="venue">Medical Sensors &amp; Imaging (IOP) · in press</div>
+            <h3>Radial and carotid arterial pulse signals for assessing cardiovascular function at rest and during post-exercise recovery in a heart transplant patient: a case study</h3>
+            <div class="auth"><b>M. M. Rahman</b>, M. Hasan, J. F. May, J. M. Herre, L. Reynolds, Z. Hao</div>
+            <button class="bibtoggle" aria-expanded="false">Show BibTeX</button>
+            <pre class="bib">@article{rahman2026radial,
+  title   = {Radial and carotid arterial pulse signals for assessing cardiovascular
+             function at rest and during post-exercise recovery in a heart
+             transplant patient: a case study},
+  author  = {Rahman, Md Mahfuzur and Hasan, M. and May, J. F. and Herre, J. M. and
+             Reynolds, L. and Hao, Zhili},
+  journal = {Medical Sensors and Imaging}, year = {2026}, note = {in press},
+  doi     = {10.1088/2977-8425/ae4b40}}</pre>
+          </div>
+        </div>
+
+        <div class="yeargroup">
+          <div class="yr">2025</div>
+          <div class="pub">
+            <div class="venue">Sensors 25(18):5710 · Part I</div>
+            <h3>An Analytical Model of Motion Artifacts in a Measured Arterial Pulse Signal — Part I: Accelerometers and PPG Sensors</h3>
+            <div class="auth"><b>M. M. Rahman</b>, et al.</div>
+            <button class="bibtoggle" aria-expanded="false">Show BibTeX</button>
+            <pre class="bib">@article{rahman2025motionI,
+  title   = {An analytical model of motion artifacts in a measured arterial pulse
+             signal---Part I: Accelerometers and PPG sensors},
+  author  = {Rahman, Md Mahfuzur and others},
+  journal = {Sensors}, volume = {25}, number = {18}, pages = {5710}, year = {2025},
+  doi     = {10.3390/s25185710}}</pre>
+          </div>
+          <div class="pub">
+            <div class="venue">Sensors 25(18):5700 · Part II</div>
+            <h3>An Analytical Model of Motion Artifacts in a Measured Arterial Pulse Signal — Part II: Tactile Sensors</h3>
+            <div class="auth"><b>M. M. Rahman</b>, et al.</div>
+            <button class="bibtoggle" aria-expanded="false">Show BibTeX</button>
+            <pre class="bib">@article{rahman2025motionII,
+  title   = {An analytical model of motion artifacts in a measured arterial pulse
+             signal---Part II: Tactile sensors},
+  author  = {Rahman, Md Mahfuzur and others},
+  journal = {Sensors}, volume = {25}, number = {18}, pages = {5700}, year = {2025},
+  doi     = {10.3390/s25185700}}</pre>
+          </div>
+          <div class="pub">
+            <div class="venue">Biosensors 15(9):578</div>
+            <h3>Motion Artifacts At-Rest in Measured Arterial Pulse Signals: Time-Varying Amplitude in Each Harmonic and Non-Flat Harmonic-MA-Coupled Baseline</h3>
+            <div class="auth"><b>M. M. Rahman</b>, et al. <span class="tag">Q1</span></div>
+            <button class="bibtoggle" aria-expanded="false">Show BibTeX</button>
+            <pre class="bib">@article{rahman2025atrest,
+  title   = {Motion artifacts at-rest in measured arterial pulse signals},
+  author  = {Rahman, Md Mahfuzur and others},
+  journal = {Biosensors}, volume = {15}, number = {9}, pages = {578}, year = {2025},
+  doi     = {10.3390/bios15090578}}</pre>
+          </div>
+          <div class="pub">
+            <div class="venue">ASME J. Eng. Sci. Med. Diagn. Ther. 9(1):011207</div>
+            <h3>Pulse Measurement Alters the True Pulse Signal in an Artery: A Coupled String-SDOF Model</h3>
+            <div class="auth">S. Toraskar, <b>M. M. Rahman</b>, Z. Hao</div>
+            <button class="bibtoggle" aria-expanded="false">Show BibTeX</button>
+            <pre class="bib">@article{toraskar2026pulse,
+  title   = {Pulse measurement alters the true pulse signal in an artery:
+             A coupled string-SDOF model},
+  author  = {Toraskar, S. and Rahman, Md Mahfuzur and Hao, Zhili},
+  journal = {ASME J. Engineering and Science in Medical Diagnostics and Therapy},
+  volume  = {9}, number = {1}, pages = {011207}, year = {2026},
+  doi     = {10.1115/1.4069099}}</pre>
+          </div>
+        </div>
+
+        <div class="yeargroup">
+          <div class="yr">2023</div>
+          <div class="pub">
+            <div class="venue">ASME J. Eng. Sci. Med. Diagn. Ther. 6(1):011008</div>
+            <h3>Axial Wall Displacement at the Common Carotid Artery is Associated With the Lamb Waves</h3>
+            <div class="auth">Z. Hao, <b>M. M. Rahman</b>, et al.</div>
+            <button class="bibtoggle" aria-expanded="false">Show BibTeX</button>
+            <pre class="bib">@article{hao2023axial,
+  title   = {Axial wall displacement at the common carotid artery is associated
+             with the Lamb waves},
+  author  = {Hao, Zhili and Rahman, Md Mahfuzur and others},
+  journal = {ASME J. Engineering and Science in Medical Diagnostics and Therapy},
+  volume  = {6}, number = {1}, pages = {011008}, year = {2023},
+  doi     = {10.1115/1.4056267}}</pre>
+          </div>
+        </div>
+
+        <div class="yeargroup">
+          <div class="yr">2021 · 2020 — Conference proceedings</div>
+          <div class="pub">
+            <div class="venue">IEEE EMBC 2021 · pp. 1284–1287</div>
+            <h3>Measurement of Post-Exercise Response of Local Arterial Parameters Using an Adjustable Microfluidic Tactile Sensor</h3>
+            <div class="auth"><b>M. M. Rahman</b>, et al.</div>
+            <button class="bibtoggle" aria-expanded="false">Show BibTeX</button>
+            <pre class="bib">@inproceedings{rahman2021postexercise,
+  title     = {Measurement of post-exercise response of local arterial parameters
+               using an adjustable microfluidic tactile sensor},
+  author    = {Rahman, Md Mahfuzur and others},
+  booktitle = {IEEE EMBC}, pages = {1284--1287}, year = {2021},
+  doi       = {10.1109/EMBC46164.2021.9630432}}</pre>
+          </div>
+          <div class="pub">
+            <div class="venue">ASME IMECE 2020 · V005T05A079</div>
+            <h3>Improved Vibration-Model-Based Analysis for Estimation of Arterial Parameters From Noninvasively Measured Arterial Pulse Signals</h3>
+            <div class="auth"><b>M. M. Rahman</b>, et al.</div>
+            <button class="bibtoggle" aria-expanded="false">Show BibTeX</button>
+            <pre class="bib">@inproceedings{rahman2020vibration,
+  title     = {Improved vibration-model-based analysis for estimation of arterial
+               parameters from noninvasively measured arterial pulse signals},
+  author    = {Rahman, Md Mahfuzur and others},
+  booktitle = {ASME IMECE}, pages = {V005T05A079}, year = {2020},
+  doi       = {10.1115/IMECE2020-24551}}</pre>
+          </div>
+        </div>
+
+        <p style="font-size:.84rem;color:var(--ink-faint);margin-top:24px">
+          Two 2026 preprints (Subject-Specific Cardiovascular Signatures, Parts I &amp; II) are under review.
+          Full list on <a href="https://scholar.google.com/" style="color:var(--trace-deep)">Google Scholar</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CVs / AUDIENCES -->
+  <section id="cvs">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">04</span><span class="sec-kicker">Pick the version that fits</span></div>
+      <h2>CV &amp; résumé, by destination</h2>
+      <div class="sec-body" style="margin-bottom:6px">
+        <p>My work spans research, teaching, and device development, so I keep a version tailored to each path.
+          Open whichever matches what you're hiring for.</p>
+      </div>
+      <div class="aud">
+        <a href="docs/resume-industry.pdf" target="_blank" rel="noopener">
+          <div class="role">Industry résumé</div>
+          <div class="desc">1–2 pages. Device development, microfabrication, electronics, V&amp;V, and regulatory/human-subjects experience for R&amp;D and medical-device roles.</div>
+          <div class="go">Open PDF →</div>
+        </a>
+        <a href="docs/resume-research.pdf" target="_blank" rel="noopener">
+          <div class="role">Research résumé</div>
+          <div class="desc">3 pages. Full project detail across fabrication, modeling, signal processing, and clinical studies — for postdoc and R&amp;D scientist positions.</div>
+          <div class="go">Open PDF →</div>
+        </a>
+        <a href="docs/cv-assistant-professor.pdf" target="_blank" rel="noopener">
+          <div class="role">Academic CV — research faculty</div>
+          <div class="desc">Complete CV with publications, funding, and research program, oriented toward tenure-track assistant professor searches.</div>
+          <div class="go">Open PDF →</div>
+        </a>
+        <a href="docs/cv-teaching.pdf" target="_blank" rel="noopener">
+          <div class="role">Academic CV — teaching-focused</div>
+          <div class="desc">Teaching-forward CV: 6+ years of instruction, course development, and mentoring for teaching-focused institutions.</div>
+          <div class="go">Open PDF →</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEACHING -->
+  <section id="teaching">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">05</span><span class="sec-kicker">6+ years</span></div>
+      <h2>Teaching</h2>
+      <div class="sec-body" style="margin-bottom:8px">
+        <p>Before and during my PhD I have taught across engineering fundamentals — as instructor of record for a
+          materials-science lab at ODU, and earlier developing and teaching 14 undergraduate courses in electronics,
+          instrumentation, and DSP in Bangladesh. My teaching interest is biomedical instrumentation and biosignal
+          processing, where I can bring the sensing and signal-analysis work directly into the classroom.</p>
+      </div>
+      <div class="teach-list">
+        <div class="row"><span class="c">MAE 203 — Materials Science Lab <em style="color:var(--ink-faint);font-style:normal;font-size:.82rem">· instructor of record</em></span><span class="w">ODU · 2022–2025</span></div>
+        <div class="row"><span class="c">MAE 205 Dynamics · 220 Solid Mechanics · 201 Materials · 434W Design</span><span class="w">ODU · TA · 2019–2025</span></div>
+        <div class="row"><span class="c">14 undergraduate courses — electronics, instrumentation, DSP, microprocessors</span><span class="w">ADUST · 2014–2017</span></div>
+        <div class="row"><span class="c">Intro EE &amp; Microprocessor / Assembly</span><span class="w">DIIT · 2016–2017</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">06</span><span class="sec-kicker" style="color:#7c8f8b">On the market for 2026</span></div>
+      <h2>Let's talk.</h2>
+      <div class="sec-body">
+        <p>I'm seeking positions starting in 2026 across industry R&amp;D, research, and academia — anywhere the work
+          is building trustworthy measurement for wearable and clinical health technology. If that's the kind of
+          problem you have, I'd like to hear about it.</p>
+        <p><a class="mail" href="mailto:mrahm009@odu.edu">mrahm009@odu.edu</a></p>
+      </div>
+      <div class="cols">
+        <div>
+          <h4>Location</h4>
+          <p>Dept. of Mechanical &amp; Aerospace Engineering<br>Old Dominion University<br>Norfolk, Virginia<br>+1 (757) 837-5456</p>
+        </div>
+        <div>
+          <h4>Elsewhere</h4>
+          <a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a>
+          <a href="https://orcid.org/" target="_blank" rel="noopener">ORCID</a>
+          <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>© 2026 Md Mahfuzur Rahman · Old Dominion University · Norfolk, VA</footer>
+
+<script>
+  // BibTeX toggles
+  document.querySelectorAll('.bibtoggle').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var bib = btn.nextElementSibling;
+      var open = bib.classList.toggle('open');
+      btn.textContent = open ? 'Hide BibTeX' : 'Show BibTeX';
+      btn.setAttribute('aria-expanded', open);
+    });
+  });
+  // Mobile nav
+  var tog = document.querySelector('.nav-toggle'), list = document.getElementById('navlist');
+  tog.addEventListener('click', function(){
+    var open = list.classList.toggle('open');
+    tog.setAttribute('aria-expanded', open);
+  });
+  list.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ list.classList.remove('open'); tog.setAttribute('aria-expanded', false); });
+  });
+  // Hero pulse: single deliberate draw-on animation, respecting reduced motion
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var p = document.getElementById('ecg');
+    if(p){ var len = p.getTotalLength();
+      p.style.strokeDasharray = len; p.style.strokeDashoffset = len;
+      p.animate([{strokeDashoffset:len},{strokeDashoffset:0}],
+        {duration:2600, easing:'ease-out', fill:'forwards'});
+    }
+  }
+</script>
+</body>
+</html>
