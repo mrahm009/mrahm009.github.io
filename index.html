@@ -3,191 +3,242 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Md Mahfuzur Rahman — Wearable cardiovascular sensing</title>
-<meta name="description" content="Md Mahfuzur Rahman builds wearable cardiovascular sensing systems end to end — soft microfluidic tactile sensors, custom analog electronics, and the signal-processing algorithms that make out-of-clinic measurement trustworthy. PhD candidate, Old Dominion University.">
+<title>Md Mahfuzur Rahman — Trustworthy wearable cardiovascular sensing</title>
+<meta name="description" content="Md Mahfuzur Rahman builds wearable cardiovascular sensing end to end — soft microfluidic tactile sensors, custom analog electronics, and the time-frequency algorithms that make out-of-clinic arterial measurement trustworthy. PhD candidate, Old Dominion University.">
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Md Mahfuzur Rahman — Wearable cardiovascular sensing">
-<meta property="og:description" content="Bridging laboratory-grade clinical measurement and accessible, wearable health technology — from microfabrication to algorithms.">
+<meta property="og:title" content="Md Mahfuzur Rahman — Trustworthy wearable cardiovascular sensing">
+<meta property="og:description" content="From microfabrication to algorithms: making a noninvasive arterial measurement honest.">
+<meta property="og:image" content="images/portrait.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#f7f6f2;
-    --ink:#16201f;
-    --ink-soft:#42504e;
-    --ink-faint:#7c8785;
-    --line:#d9d6cd;
-    --line-soft:#e7e4dc;
-    --trace:#0f8a6f;      /* oscilloscope / arterial-trace green */
-    --trace-deep:#0a5f4d;
-    --panel:#eeece5;
-    --white:#ffffff;
-    --maxw:1080px;
-    --serif:"Fraunces",Georgia,serif;
-    --sans:"Inter",system-ui,-apple-system,sans-serif;
+    --paper:#f7f6f2; --ink:#16201f; --ink-soft:#42504e; --ink-faint:#7c8785;
+    --line:#d9d6cd; --line-soft:#e7e4dc; --trace:#0f8a6f; --trace-deep:#0a5f4d;
+    --panel:#eeece5; --white:#fff; --maxw:1080px;
+    --serif:"Fraunces",Georgia,serif; --sans:"Inter",system-ui,-apple-system,sans-serif;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  body{
-    margin:0;background:var(--paper);color:var(--ink);
-    font-family:var(--sans);font-size:17px;line-height:1.6;
-    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-  }
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   a{color:inherit}
   h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;margin:0}
   ::selection{background:var(--trace);color:#fff}
-
+  img{max-width:100%;display:block}
   .skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:.6rem 1rem;z-index:100}
   .skip:focus{left:8px;top:8px}
-
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
 
-  /* ---------- nav ---------- */
-  header.nav{position:sticky;top:0;z-index:40;background:rgba(247,246,242,.86);
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:40;background:rgba(247,246,242,.9);
     backdrop-filter:blur(9px);border-bottom:1px solid var(--line)}
-  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 28px;
-    display:flex;align-items:baseline;justify-content:space-between;gap:20px}
-  .brand{font-family:var(--serif);font-size:1.05rem;font-weight:600;white-space:nowrap}
-  .brand span{color:var(--ink-faint);font-family:var(--sans);font-size:.72rem;
-    font-weight:500;display:block;letter-spacing:.02em;margin-top:1px}
-  nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0;font-size:.82rem}
-  nav a{color:var(--ink-soft);text-decoration:none;padding:4px 0;border-bottom:1px solid transparent}
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:13px 28px;display:flex;
+    align-items:baseline;justify-content:space-between;gap:20px}
+  .brand{font-family:var(--serif);font-size:1.02rem;font-weight:600;white-space:nowrap}
+  .brand span{color:var(--ink-faint);font-family:var(--sans);font-size:.7rem;font-weight:500;
+    display:block;margin-top:1px}
+  nav ul{list-style:none;display:flex;gap:18px;margin:0;padding:0;font-size:.8rem;flex-wrap:wrap}
+  nav a{color:var(--ink-soft);text-decoration:none;padding:4px 0;border-bottom:1px solid transparent;white-space:nowrap}
   nav a:hover{color:var(--trace-deep);border-bottom-color:var(--trace)}
   .nav-toggle{display:none}
 
-  /* ---------- hero ---------- */
+  /* hero */
   .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
   .pulse-bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.5}
-  .hero-inner{max-width:var(--maxw);margin:0 auto;padding:88px 28px 72px;position:relative}
+  .hero-inner{max-width:var(--maxw);margin:0 auto;padding:84px 28px 70px;position:relative}
   .eyebrow{font-size:.8rem;color:var(--trace-deep);font-weight:600;margin-bottom:22px}
-  .hero h1{font-size:clamp(2.3rem,5.4vw,3.9rem);line-height:1.04;max-width:16ch}
-  .hero .lede{font-family:var(--serif);font-style:italic;font-size:clamp(1.15rem,2.4vw,1.5rem);
-    color:var(--ink-soft);margin:26px 0 0;max-width:34ch;line-height:1.35}
-  .hero p.sub{margin:30px 0 0;max-width:56ch;color:var(--ink-soft);font-size:1.02rem}
-  .idcard{display:flex;gap:20px;align-items:center;margin-top:44px;flex-wrap:wrap}
-  .idcard img{width:74px;height:74px;border-radius:50%;object-fit:cover;
-    background:var(--panel);border:1px solid var(--line)}
-  .idcard .who{font-size:.95rem;line-height:1.45}
-  .idcard .who strong{font-family:var(--serif);font-size:1.08rem;font-weight:600;display:block}
-  .idcard .who span{color:var(--ink-faint)}
-  .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
-  .links a{font-size:.83rem;text-decoration:none;padding:8px 15px;border:1px solid var(--line);
-    border-radius:2px;color:var(--ink);background:var(--white);transition:.15s}
+  .hero h1{font-size:clamp(2.2rem,5.2vw,3.7rem);line-height:1.05;max-width:17ch}
+  .hero .lede{font-family:var(--serif);font-style:italic;font-size:clamp(1.12rem,2.4vw,1.45rem);
+    color:var(--ink-soft);margin:24px 0 0;max-width:36ch;line-height:1.35}
+  .hero p.sub{margin:28px 0 0;max-width:58ch;color:var(--ink-soft);font-size:1.01rem}
+  .idcard{display:flex;gap:18px;align-items:center;margin-top:42px;flex-wrap:wrap}
+  .idcard img{width:72px;height:72px;border-radius:50%;object-fit:cover;background:var(--panel);border:1px solid var(--line)}
+  .idcard .who strong{font-family:var(--serif);font-size:1.06rem;font-weight:600;display:block}
+  .idcard .who span{color:var(--ink-faint);font-size:.92rem}
+  .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+  .links a{font-size:.82rem;text-decoration:none;padding:8px 15px;border:1px solid var(--line);
+    border-radius:2px;background:var(--white);transition:.15s}
   .links a:hover{border-color:var(--trace);color:var(--trace-deep)}
   .links a.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
-  .links a.primary:hover{background:var(--trace-deep);border-color:var(--trace-deep);color:#fff}
+  .links a.primary:hover{background:var(--trace-deep);border-color:var(--trace-deep)}
 
-  /* ---------- at a glance ---------- */
+  /* glance */
   .glance{border-bottom:1px solid var(--line);background:var(--panel)}
-  .glance-grid{max-width:var(--maxw);margin:0 auto;padding:0 28px;
-    display:grid;grid-template-columns:repeat(6,1fr)}
-  .stat{padding:22px 18px;border-left:1px solid var(--line-soft)}
+  .glance-grid{max-width:var(--maxw);margin:0 auto;padding:0 28px;display:grid;grid-template-columns:repeat(6,1fr)}
+  .stat{padding:20px 16px;border-left:1px solid var(--line-soft)}
   .stat:first-child{border-left:none}
-  .stat .n{font-family:var(--serif);font-size:1.5rem;font-weight:600;color:var(--trace-deep);line-height:1}
-  .stat .l{font-size:.74rem;color:var(--ink-faint);margin-top:7px;line-height:1.3}
+  .stat .n{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--trace-deep);line-height:1}
+  .stat .l{font-size:.72rem;color:var(--ink-faint);margin-top:6px;line-height:1.3}
 
-  /* ---------- section frame ---------- */
-  section{padding:76px 0;border-bottom:1px solid var(--line)}
-  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+  /* section frame */
+  section{padding:74px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:6px}
   .sec-num{font-family:var(--serif);font-size:.95rem;color:var(--trace);font-weight:600;
     font-feature-settings:"tnum";width:2.2rem;flex:none}
   .sec-kicker{font-size:.78rem;color:var(--ink-faint);margin-left:auto;font-weight:500}
-  h2{font-size:clamp(1.6rem,3.4vw,2.3rem);line-height:1.1;padding-left:calc(2.2rem + 16px)}
-  .sec-body{padding-left:calc(2.2rem + 16px);margin-top:22px;max-width:64ch}
+  h2{font-size:clamp(1.55rem,3.3vw,2.2rem);line-height:1.12;padding-left:calc(2.2rem + 16px)}
+  .sec-body{padding-left:calc(2.2rem + 16px);margin-top:20px;max-width:64ch}
   .sec-body p{margin:0 0 18px;color:var(--ink-soft)}
   .sec-body p strong{color:var(--ink);font-weight:600}
+  .indent{padding-left:calc(2.2rem + 16px)}
 
-  /* ---------- research threads ---------- */
-  .threads{margin-top:12px;padding-left:calc(2.2rem + 16px)}
-  .thread{padding:30px 0;border-top:1px solid var(--line-soft);display:grid;
-    grid-template-columns:auto 1fr;gap:26px}
+  /* overview media */
+  .overview-media{padding-left:calc(2.2rem + 16px);margin-top:24px}
+  .media-frame{border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--white)}
+  .media-frame video{width:100%;display:block}
+  .media-ph{aspect-ratio:16/8;display:flex;align-items:center;justify-content:center;
+    background:var(--panel);color:var(--ink-faint);font-size:.9rem;text-align:center;padding:24px;flex-direction:column;gap:8px}
+  .media-ph .big{font-family:var(--serif);font-size:1.1rem;color:var(--ink-soft)}
+  .cap{font-size:.8rem;color:var(--ink-faint);margin-top:10px;font-style:italic}
+
+  /* program map (interactive) */
+  .map{padding-left:calc(2.2rem + 16px);margin-top:26px}
+  .map-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+  .map-filters button{font-family:var(--sans);font-size:.76rem;padding:6px 13px;border:1px solid var(--line);
+    background:var(--white);border-radius:2px;cursor:pointer;color:var(--ink-soft);transition:.15s}
+  .map-filters button:hover{border-color:var(--trace)}
+  .map-filters button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .lanes{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px 0}
+  .lane{display:grid;grid-template-columns:120px 1fr;align-items:center;gap:14px;padding:9px 0;border-top:1px solid var(--line-soft)}
+  .lane:first-child{border-top:none}
+  .lane .lname{font-size:.72rem;color:var(--ink-faint);line-height:1.25;text-align:right}
+  .lane .track{position:relative;height:34px}
+  .bar{position:absolute;top:4px;height:26px;border-radius:3px;border:1px solid var(--trace-deep);
+    background:var(--trace);opacity:.86;cursor:pointer;display:flex;align-items:center;padding:0 9px;
+    font-size:.7rem;color:#fff;overflow:hidden;white-space:nowrap;transition:.15s}
+  .bar:hover,.bar.sel{opacity:1;box-shadow:0 2px 8px rgba(10,95,77,.3)}
+  .bar.dim{opacity:.18;filter:grayscale(1)}
+  .axis{display:grid;grid-template-columns:120px 1fr;gap:14px;margin-top:6px}
+  .axis .ticks{display:flex;justify-content:space-between;font-size:.66rem;color:var(--ink-faint)}
+  .detail{margin-top:20px;border:1px solid var(--line);border-radius:4px;background:var(--white);padding:22px;min-height:120px}
+  .detail .meta{font-size:.74rem;color:var(--trace-deep);font-weight:600;margin-bottom:6px}
+  .detail h3{font-size:1.2rem;margin-bottom:8px}
+  .detail p{margin:0;color:var(--ink-soft);font-size:.96rem}
+  .detail .empty{color:var(--ink-faint);font-style:italic}
+
+  /* threads */
+  .threads{margin-top:10px;padding-left:calc(2.2rem + 16px)}
+  .thread{padding:30px 0;border-top:1px solid var(--line-soft)}
   .thread:first-child{border-top:none}
-  .thread .tno{font-family:var(--serif);font-size:1.05rem;color:var(--trace);font-weight:600;
-    padding-top:3px;font-feature-settings:"tnum"}
-  .thread h3{font-size:1.28rem;margin-bottom:4px}
-  .thread .meta{font-size:.76rem;color:var(--ink-faint);margin-bottom:12px}
-  .thread p{margin:0;color:var(--ink-soft);font-size:.98rem;max-width:60ch}
+  .thread .grid{display:grid;grid-template-columns:auto 1fr;gap:24px}
+  .thread .tno{font-family:var(--serif);font-size:1.05rem;color:var(--trace);font-weight:600;padding-top:3px}
+  .thread h3{font-size:1.26rem;margin-bottom:4px}
+  .thread .meta{font-size:.75rem;color:var(--ink-faint);margin-bottom:12px}
+  .thread p{margin:0;color:var(--ink-soft);font-size:.97rem;max-width:60ch}
   .thread .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-  .thread .tags span{font-size:.72rem;color:var(--trace-deep);background:var(--panel);
+  .thread .tags span{font-size:.71rem;color:var(--trace-deep);background:var(--panel);
     border:1px solid var(--line-soft);padding:3px 9px;border-radius:2px}
+  .figslot{margin-top:16px;border:1px dashed var(--line);border-radius:4px;background:var(--panel);
+    aspect-ratio:16/7;display:flex;align-items:center;justify-content:center;color:var(--ink-faint);
+    font-size:.82rem;text-align:center;padding:16px}
+  .figslot img{border-radius:4px}
+  .thread figure{margin:16px 0 0}
+  .thread figure img{border:1px solid var(--line);border-radius:4px}
+  .thread figcaption{font-size:.78rem;color:var(--ink-faint);margin-top:8px;font-style:italic}
 
-  /* ---------- publications ---------- */
-  .pubs{padding-left:calc(2.2rem + 16px);margin-top:12px}
-  .yeargroup{margin-top:30px}
-  .yeargroup:first-child{margin-top:6px}
-  .yr{font-family:var(--serif);font-size:1.05rem;color:var(--ink-faint);font-weight:600;
-    padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:6px}
-  .pub{padding:18px 0;border-bottom:1px solid var(--line-soft)}
-  .pub .venue{font-size:.76rem;color:var(--trace-deep);font-weight:600;margin-bottom:5px}
-  .pub h3{font-size:1.06rem;font-family:var(--sans);font-weight:600;line-height:1.4;margin-bottom:5px}
-  .pub .auth{font-size:.86rem;color:var(--ink-faint);line-height:1.5}
+  /* scan viewer */
+  .viewer{padding-left:calc(2.2rem + 16px);margin-top:24px}
+  .viewer-box{border:1px solid var(--line);border-radius:4px;background:var(--white);padding:18px}
+  .viewer-stage{aspect-ratio:16/9;background:var(--ink);border-radius:3px;display:flex;
+    align-items:center;justify-content:center;color:#5f726e;font-size:.85rem;text-align:center;padding:20px;position:relative;overflow:hidden}
+  .viewer-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:none}
+  .viewer-controls{display:flex;align-items:center;gap:14px;margin-top:14px}
+  .viewer-controls input[type=range]{flex:1;accent-color:var(--trace)}
+  .viewer-controls .slice{font-size:.78rem;color:var(--ink-faint);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+  /* publications */
+  .pubs{padding-left:calc(2.2rem + 16px);margin-top:10px}
+  .pubfilter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+  .pubfilter button{font-size:.75rem;padding:5px 12px;border:1px solid var(--line);background:var(--white);
+    border-radius:2px;cursor:pointer;color:var(--ink-soft)}
+  .pubfilter button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .yeargroup{margin-top:26px}
+  .yr{font-family:var(--serif);font-size:1.02rem;color:var(--ink-faint);font-weight:600;
+    padding-bottom:9px;border-bottom:1px solid var(--line);margin-bottom:4px}
+  .pub{padding:17px 0;border-bottom:1px solid var(--line-soft)}
+  .pub .venue{font-size:.75rem;color:var(--trace-deep);font-weight:600;margin-bottom:5px}
+  .pub h3{font-size:1.03rem;font-family:var(--sans);font-weight:600;line-height:1.4;margin-bottom:5px}
+  .pub .auth{font-size:.85rem;color:var(--ink-faint);line-height:1.5}
   .pub .auth b{color:var(--ink-soft);font-weight:600}
-  .pub .tag{display:inline-block;font-size:.68rem;border:1px solid var(--line);border-radius:2px;
-    padding:1px 7px;color:var(--ink-faint);margin-left:8px;vertical-align:middle}
-  .bibtoggle{margin-top:10px;font-size:.76rem;color:var(--trace-deep);background:none;
-    border:none;cursor:pointer;padding:0;font-family:var(--sans);border-bottom:1px dotted var(--trace)}
-  .bib{display:none;margin-top:12px;background:var(--ink);color:#d7e7e2;border-radius:3px;
-    padding:16px;font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:.74rem;
-    line-height:1.55;overflow-x:auto;white-space:pre}
+  .pub .tag{display:inline-block;font-size:.67rem;border:1px solid var(--line);border-radius:2px;
+    padding:1px 7px;color:var(--ink-faint);margin-left:8px}
+  .bibtoggle{margin-top:9px;font-size:.75rem;color:var(--trace-deep);background:none;border:none;
+    cursor:pointer;padding:0;font-family:var(--sans);border-bottom:1px dotted var(--trace)}
+  .bib{display:none;margin-top:11px;background:var(--ink);color:#d7e7e2;border-radius:3px;padding:15px;
+    font-family:ui-monospace,Menlo,monospace;font-size:.73rem;line-height:1.55;overflow-x:auto;white-space:pre}
   .bib.open{display:block}
 
-  /* ---------- audiences ---------- */
-  .aud{padding-left:calc(2.2rem + 16px);margin-top:22px;display:grid;
-    grid-template-columns:repeat(2,1fr);gap:14px;max-width:none}
-  .aud a{display:block;text-decoration:none;border:1px solid var(--line);background:var(--white);
-    padding:22px;border-radius:3px;transition:.15s}
+  /* build/validate */
+  .build{padding-left:calc(2.2rem + 16px);margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .build .card h3{font-size:1.05rem;font-family:var(--sans);font-weight:600;margin-bottom:8px}
+  .build .card p{margin:0;color:var(--ink-soft);font-size:.92rem}
+  .build .card .note{color:var(--ink-faint);font-size:.82rem;font-style:italic;margin-top:8px}
+  .stack{padding-left:calc(2.2rem + 16px);margin-top:26px;border-top:1px solid var(--line-soft);padding-top:22px}
+  .stack .row{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:8px 0;font-size:.9rem}
+  .stack .row .k{color:var(--trace-deep);font-weight:600;font-size:.82rem}
+  .stack .row .v{color:var(--ink-soft)}
+
+  /* trajectory */
+  .traj{padding-left:calc(2.2rem + 16px);margin-top:20px}
+  .traj h3{font-size:.8rem;color:var(--trace-deep);font-weight:600;margin:22px 0 12px;font-family:var(--sans)}
+  .traj .item{padding:12px 0;border-top:1px solid var(--line-soft)}
+  .traj .item:first-of-type{border-top:none}
+  .traj .item .t{font-family:var(--serif);font-size:1.02rem;font-weight:600}
+  .traj .item .d{font-size:.9rem;color:var(--ink-soft);margin-top:3px}
+  .traj .item .w{font-size:.74rem;color:var(--ink-faint);margin-top:4px}
+
+  /* audiences */
+  .aud{padding-left:calc(2.2rem + 16px);margin-top:20px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .aud a{display:block;text-decoration:none;border:1px solid var(--line);background:var(--white);padding:22px;border-radius:3px;transition:.15s}
   .aud a:hover{border-color:var(--trace);transform:translateY(-2px)}
-  .aud .role{font-family:var(--serif);font-size:1.12rem;font-weight:600;margin-bottom:5px}
-  .aud .desc{font-size:.86rem;color:var(--ink-soft);line-height:1.5}
-  .aud .go{font-size:.76rem;color:var(--trace-deep);font-weight:600;margin-top:12px;display:inline-block}
+  .aud .role{font-family:var(--serif);font-size:1.1rem;font-weight:600;margin-bottom:5px}
+  .aud .desc{font-size:.85rem;color:var(--ink-soft);line-height:1.5}
+  .aud .go{font-size:.75rem;color:var(--trace-deep);font-weight:600;margin-top:12px;display:inline-block}
 
-  /* ---------- teaching ---------- */
-  .teach-list{padding-left:calc(2.2rem + 16px);margin-top:20px;max-width:64ch}
-  .teach-list .row{display:flex;justify-content:space-between;gap:20px;padding:11px 0;
-    border-bottom:1px solid var(--line-soft);font-size:.92rem}
-  .teach-list .row .c{color:var(--ink)}
-  .teach-list .row .w{color:var(--ink-faint);font-size:.82rem;text-align:right;flex:none}
+  /* teaching */
+  .teach-list{padding-left:calc(2.2rem + 16px);margin-top:18px;max-width:64ch}
+  .teach-list .row{display:flex;justify-content:space-between;gap:20px;padding:11px 0;border-bottom:1px solid var(--line-soft);font-size:.91rem}
+  .teach-list .row .w{color:var(--ink-faint);font-size:.8rem;text-align:right;flex:none}
 
-  /* ---------- contact ---------- */
+  /* news */
+  .news{padding-left:calc(2.2rem + 16px);margin-top:18px;max-width:70ch}
+  .news .row{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:11px 0;border-bottom:1px solid var(--line-soft);font-size:.92rem}
+  .news .row .when{font-size:.78rem;color:var(--trace-deep);font-weight:600}
+  .news .row .what{color:var(--ink-soft)}
+
+  /* contact */
   .contact{background:var(--ink);color:var(--paper);border-bottom:none}
-  .contact h2{color:#fff}
-  .contact .sec-num{color:var(--trace)}
-  .contact .sec-body{max-width:60ch}
+  .contact h2{color:#fff}.contact .sec-num{color:var(--trace)}
   .contact .sec-body p{color:#bcc9c6}
-  .contact a.mail{color:#fff;font-family:var(--serif);font-size:clamp(1.3rem,3vw,2rem);
-    text-decoration:none;border-bottom:2px solid var(--trace)}
-  .contact .cols{padding-left:calc(2.2rem + 16px);margin-top:36px;display:grid;
-    grid-template-columns:1fr 1fr;gap:30px;font-size:.9rem}
-  .contact .cols h4{font-family:var(--sans);font-size:.74rem;color:var(--trace);
-    text-transform:none;font-weight:600;margin:0 0 10px}
+  .contact a.mail{color:#fff;font-family:var(--serif);font-size:clamp(1.3rem,3vw,2rem);text-decoration:none;border-bottom:2px solid var(--trace)}
+  .contact .cols{padding-left:calc(2.2rem + 16px);margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:30px;font-size:.9rem}
+  .contact .cols h4{font-family:var(--sans);font-size:.74rem;color:var(--trace);font-weight:600;margin:0 0 10px}
   .contact .cols a{color:#cdd8d5;text-decoration:none;display:block;padding:3px 0}
   .contact .cols a:hover{color:#fff}
   .contact .cols p{color:#9fb0ac;margin:0;line-height:1.6}
-
   footer{background:var(--ink);color:#7c8f8b;font-size:.78rem;padding:26px 28px;text-align:center}
 
   @media(max-width:820px){
     .glance-grid{grid-template-columns:repeat(3,1fr)}
     .stat:nth-child(4){border-left:none}
-    .aud{grid-template-columns:1fr}
-    .contact .cols{grid-template-columns:1fr}
+    .build,.aud,.contact .cols{grid-template-columns:1fr}
   }
   @media(max-width:640px){
     body{font-size:16px}
-    .nav-toggle{display:block;background:none;border:1px solid var(--line);border-radius:3px;
-      padding:6px 10px;font-size:.8rem;cursor:pointer;color:var(--ink)}
-    nav ul{display:none;position:absolute;top:100%;right:0;left:0;background:var(--paper);
-      flex-direction:column;gap:0;border-bottom:1px solid var(--line);padding:8px 28px}
+    .nav-toggle{display:block;background:none;border:1px solid var(--line);border-radius:3px;padding:6px 10px;font-size:.8rem;cursor:pointer;color:var(--ink)}
+    nav ul{display:none;position:absolute;top:100%;right:0;left:0;background:var(--paper);flex-direction:column;gap:0;border-bottom:1px solid var(--line);padding:8px 28px}
     nav ul.open{display:flex}
-    nav li{border-top:1px solid var(--line-soft)}
-    nav ul a{display:block;padding:12px 0}
+    nav li{border-top:1px solid var(--line-soft)} nav ul a{display:block;padding:12px 0}
     .glance-grid{grid-template-columns:repeat(2,1fr)}
     .stat:nth-child(3),.stat:nth-child(5){border-left:none}
-    h2,.sec-body,.threads,.pubs,.aud,.teach-list,.contact .cols{padding-left:0}
+    h2,.sec-body,.indent,.threads,.pubs,.aud,.teach-list,.news,.map,.overview-media,.viewer,.build,.stack,.traj,.contact .cols{padding-left:0}
     .sec-head{padding-left:0}
-    .thread{grid-template-columns:1fr;gap:8px}
+    .thread .grid{grid-template-columns:1fr;gap:8px}
+    .lane{grid-template-columns:78px 1fr;gap:8px}.axis{grid-template-columns:78px 1fr;gap:8px}
+    .stack .row{grid-template-columns:1fr;gap:2px}.news .row{grid-template-columns:1fr;gap:2px}
   }
 </style>
 </head>
@@ -200,10 +251,14 @@
     <nav>
       <button class="nav-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
       <ul id="navlist">
-        <li><a href="#problem">Focus</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#papers">Publications</a></li>
-        <li><a href="#cvs">CV &amp; Résumé</a></li>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#program">Program</a></li>
+        <li><a href="#threads">Threads</a></li>
+        <li><a href="#papers">Papers</a></li>
+        <li><a href="#build">Build</a></li>
+        <li><a href="#trajectory">Trajectory</a></li>
+        <li><a href="#cvs">CV</a></li>
         <li><a href="#teaching">Teaching</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -214,7 +269,7 @@
 <main id="main">
 
   <!-- HERO -->
-  <section class="hero" style="border-bottom:1px solid var(--line);padding:0">
+  <section class="hero" style="padding:0">
     <svg class="pulse-bg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <path id="ecg" fill="none" stroke="var(--trace)" stroke-width="1.6" opacity="0.55"
         d="M0,210 L180,210 200,210 210,205 220,214 232,150 244,262 256,196 268,210 300,210
@@ -232,7 +287,6 @@
         algorithms that pull real arterial parameters out of noisy, moving, real-world signals. The through-line of
         my work is <strong>making a measurement honest</strong> — separating what the artery is doing from what the
         motion, the sensor, and the body are adding on top.</p>
-
       <div class="idcard">
         <img src="images/portrait.jpg" alt="Md Mahfuzur Rahman" onerror="this.style.display='none'">
         <div class="who">
@@ -240,19 +294,18 @@
           <span>PhD candidate, Mechanical &amp; Aerospace Engineering<br>Old Dominion University · Advisor: Dr. Zhili Hao</span>
         </div>
       </div>
-
       <div class="links">
         <a class="primary" href="#cvs">CV &amp; Résumé</a>
         <a href="https://scholar.google.com/citations?user=8UTf-BEAAAAJ&hl=en&authuser=1" target="_blank" rel="noopener">Google Scholar</a>
         <a href="https://orcid.org/0000-0001-8405-2227" target="_blank" rel="noopener">ORCID</a>
-        <!--<a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>-->
+        <a href="https://github.com/mrahm009" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/md-mahfuzur-rahman-1aa4a412a/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="mailto:mrahm009@odu.edu">Email</a>
       </div>
     </div>
   </section>
 
-  <!-- AT A GLANCE -->
+  <!-- GLANCE -->
   <div class="glance">
     <div class="glance-grid">
       <div class="stat"><div class="n">6+</div><div class="l">Years research experience</div></div>
@@ -264,107 +317,206 @@
     </div>
   </div>
 
-  <!-- PROBLEM -->
-  <section id="problem">
+  <!-- 00 OVERVIEW -->
+  <section id="overview">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">01</span><span class="sec-kicker">The focus</span></div>
-      <h2>The problem I work on</h2>
-      <div class="sec-body">
-        <p>Cardiovascular disease is monitored with instruments that live in hospitals: Doppler ultrasound,
-          applanation tonometry, arterial catheters. They are accurate and they stay put. Meanwhile the moments
-          that matter for a heart patient — the recovery after exertion, the drift over weeks of rehabilitation —
-          happen at home, where none of those instruments can follow.</p>
-        <p>A wearable sensor can go there, but it inherits problems the clinic never had. The person moves. The
-          skin, the tape, and the sensor add their own mechanics to the signal. Body composition changes what the
-          waveform even looks like. A device that reports a clean-looking number under these conditions is often
-          reporting the artifact, not the artery.</p>
-        <p>So my research question is not only how to <strong>acquire</strong> an arterial pulse noninvasively, but
-          how to <strong>tell the true signal apart from everything the measurement adds to it</strong> — through
-          the sensor design, the electronics, and the signal processing together, because the honesty has to be
-          built at every layer or it is not there at all.</p>
+      <div class="sec-head"><span class="sec-num">◆</span><span class="sec-kicker">A short overview</span></div>
+      <h2>What I work on</h2>
+      <div class="sec-body" style="margin-bottom:4px">
+        <p>The medical problem, the sensor that can reach it, and the signal processing that makes the reading
+          trustworthy — in one pass. The figures throughout this page come from my own papers.</p>
+      </div>
+      <div class="overview-media">
+        <div class="media-frame">
+          <!-- Replace this placeholder with a video once you record one:
+               <video controls poster="images/overview-poster.jpg"><source src="images/overview.webm" type="video/webm"></video> -->
+          <div class="media-ph">
+            <span class="big">A ~90-second overview goes here</span>
+            <span>Optional: record a short screen/lab walkthrough and save it as <code>images/overview.webm</code>,
+              then swap it in. Until then this placeholder stays.</span>
+          </div>
+        </div>
+        <p class="cap">Soft microfluidic tactile sensor at the radial and carotid arteries — acquisition, modeling, and validation against clinical references.</p>
       </div>
     </div>
   </section>
 
-  <!-- RESEARCH -->
-  <section id="research">
+  <!-- 01 APPROACH -->
+  <section id="approach">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">02</span><span class="sec-kicker">Four threads, one program</span></div>
-      <h2>What I build, and what each thread found</h2>
+      <div class="sec-head"><span class="sec-num">01</span><span class="sec-kicker">Framing</span></div>
+      <h2>How I work</h2>
+      <div class="sec-body">
+        <p>Cardiovascular disease is monitored with instruments that live in hospitals: Doppler ultrasound,
+          applanation tonometry, arterial catheters. They are accurate and they stay put. But the moments that
+          matter for a heart patient — the recovery after exertion, the drift over weeks of rehabilitation — happen
+          at home, where none of those instruments can follow.</p>
+        <p>A wearable sensor can go there, but it inherits problems the clinic never had. The person moves. The
+          skin, the tape, and the sensor add their own mechanics to the signal. Body composition changes what the
+          waveform even looks like. A device that reports a clean-looking number under these conditions is often
+          reporting the artifact, not the artery.</p>
+        <p>So my method is the same each time: understand what the physiological question is, build a sensor and the
+          electronics that can acquire it noninvasively, then develop the signal processing that
+          <strong>separates the true arterial signal from everything the measurement adds to it</strong> — and
+          validate the result against clinical reference standards on real patients. The honesty has to be built at
+          every layer, or it is not there at all.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 PROGRAM MAP (interactive) -->
+  <section id="program">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02</span><span class="sec-kicker">Select a project</span></div>
+      <h2>The program, mapped</h2>
+      <div class="sec-body" style="margin-bottom:4px">
+        <p>Six years of work across three method families. The horizontal axis is time; the lanes are the kinds of
+          problem. Click any bar to read what it was and what came out of it, or filter by method family to see the
+          through-line.</p>
+      </div>
+      <div class="map">
+        <div class="map-filters">
+          <button data-lane="all" class="active">All lanes</button>
+          <button data-lane="fab">Fabrication &amp; hardware</button>
+          <button data-lane="model">Modeling &amp; artifacts</button>
+          <button data-lane="signal">Signal processing &amp; validation</button>
+        </div>
+        <div class="lanes" id="lanes">
+          <div class="lane" data-lane="fab">
+            <div class="lname">Fabrication &amp; hardware</div>
+            <div class="track">
+              <div class="bar" data-id="p1" style="left:0%;width:100%">Microfluidic tactile sensor &amp; AFE</div>
+            </div>
+          </div>
+          <div class="lane" data-lane="model">
+            <div class="lname">Modeling &amp; artifacts</div>
+            <div class="track">
+              <div class="bar" data-id="p2" style="left:30%;width:55%">Motion-artifact analytical model</div>
+            </div>
+          </div>
+          <div class="lane" data-lane="signal">
+            <div class="lname">Signal processing &amp; validation</div>
+            <div class="track">
+              <div class="bar" data-id="p3" style="left:12%;width:88%">Time-frequency parameter estimation</div>
+              <div class="bar" data-id="p4" style="left:40%;width:60%;top:4px;opacity:0;pointer-events:none"></div>
+            </div>
+          </div>
+          <div class="lane" data-lane="signal">
+            <div class="lname">Clinical studies</div>
+            <div class="track">
+              <div class="bar" data-id="p4" style="left:30%;width:70%">Multi-BMI &amp; cardiac-rehab studies</div>
+            </div>
+          </div>
+        </div>
+        <div class="axis"><div></div><div class="ticks"><span>2019</span><span>2021</span><span>2023</span><span>2025</span><span>now</span></div></div>
+        <div class="detail" id="detail">
+          <p class="empty">Select a project bar above to read about it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 THREADS -->
+  <section id="threads">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">03</span><span class="sec-kicker">Four threads, one program</span></div>
+      <h2>What each thread found</h2>
       <div class="threads">
 
         <div class="thread">
-          <div class="tno">i</div>
-          <div>
+          <div class="grid"><div class="tno">i</div><div>
             <h3>The sensor, made by hand</h3>
             <div class="meta">2019–present · NSF #1936005 · Microfabrication</div>
             <p>I fabricate soft-polymer (PDMS) microfluidic tactile sensors end to end: photolithographic Au/Cr
-              electrode patterning on Pyrex, SU-8 microchannel molds, PDMS casting and plasma bonding — reaching
-              1.5&nbsp;mm transducer spacing and 0.2&nbsp;µm displacement resolution. Later I moved to 3D-printed
-              molds, which cut the fabrication cycle by removing spin-coating, UV exposure, and baking while holding
-              geometric fidelity. The device is paired with custom KiCad analog front-end PCBs — transimpedance
-              amplifiers, demodulation, multi-transducer readout into NI DAQ and LabVIEW.</p>
+              electrode patterning on Pyrex, SU-8 microchannel molds (100–150&nbsp;µm), PDMS casting and plasma
+              bonding — reaching 1.5&nbsp;mm transducer spacing and 0.2&nbsp;µm displacement resolution. I later
+              moved to 3D-printed molds, cutting the fabrication cycle by removing spin-coating, UV exposure, and
+              baking. The device is read by custom KiCad analog front-end PCBs — transimpedance amplifiers,
+              demodulation, multi-transducer readout into NI DAQ and LabVIEW.</p>
             <div class="tags"><span>Photolithography</span><span>PDMS soft lithography</span><span>KiCad AFE</span><span>NI DAQ / LabVIEW</span></div>
-          </div>
+            <!-- To add a figure: replace the figslot div below with
+                 <figure><img src="images/fig-sensor.jpg" alt="Sensor fabrication"><figcaption>Your caption.</figcaption></figure> -->
+            <div class="figslot">Figure slot — add <code>images/fig-sensor.jpg</code> (fabrication steps or sensor photo)</div>
+          </div></div>
         </div>
 
         <div class="thread">
-          <div class="tno">ii</div>
-          <div>
+          <div class="grid"><div class="tno">ii</div><div>
             <h3>Modeling the motion artifact instead of hiding it</h3>
             <div class="meta">2021–2025 · Sensors / Biosensors 2025 · Analytical modeling</div>
             <p>Rather than filter motion artifacts away and hope, I built an analytical model of where they come
               from — relating baseline drift and a newly defined set of time-varying system parameters to the
-              measured pulse. The model explains, mathematically, how the sensor–tissue system distorts the true
-              signal at rest and in motion. The point is the same as the rest of my work: a distortion you can
-              write down is a distortion you can separate out, rather than one that quietly corrupts the number.</p>
+              measured pulse. The model explains mathematically how the sensor–tissue system distorts the true
+              signal, at rest and in motion. A distortion you can write down is one you can separate out, rather
+              than one that quietly corrupts the number.</p>
             <div class="tags"><span>Motion-artifact model</span><span>Time-varying system parameters</span><span>Baseline drift</span></div>
-          </div>
+            <div class="figslot">Figure slot — add <code>images/fig-artifact.jpg</code> (model schematic or before/after signal)</div>
+          </div></div>
         </div>
 
         <div class="thread">
-          <div class="tno">iii</div>
-          <div>
+          <div class="grid"><div class="tno">iii</div><div>
             <h3>Pulling parameters out of a nonstationary signal</h3>
             <div class="meta">2020–present · Dissertation · Time-frequency analysis</div>
             <p>An arterial pulse is nonstationary — its harmonics move beat to beat — so ordinary spectral tools
               blur exactly what matters. I develop MATLAB/Python pipelines built on EMD, complex demodulation, HVD,
               wavelet transforms, and HHT, including hybrid masked EMD–HVD and CDM–HVD methods for instantaneous,
               beat-by-beat parameter estimation. This is the core of my dissertation: recovering elasticity,
-              viscosity, PWV, and augmentation index as they actually change in time.</p>
+              viscosity, PWV, and augmentation index as they change in time.</p>
             <div class="tags"><span>EMD / HHT / HVD</span><span>Complex demodulation</span><span>Wavelets</span><span>Hybrid EMD–HVD</span></div>
-          </div>
+            <div class="figslot">Figure slot — add <code>images/fig-tfa.jpg</code> (time-frequency spectrum or decomposition)</div>
+          </div></div>
         </div>
 
         <div class="thread">
-          <div class="tno">iv</div>
-          <div>
+          <div class="grid"><div class="tno">iv</div><div>
             <h3>Proving it against the clinic</h3>
             <div class="meta">2021–present · IRB-approved · Clinical validation</div>
             <p>None of the above counts until it holds up against reference instruments on real patients. I design
               and run IRB-approved human-subject studies — healthy volunteers, cardiac-rehabilitation patients at
               Sentara, a heart-transplant case study — acquiring sensor data alongside Doppler ultrasound,
-              tonometry, and blood pressure, and validating derived parameters against those standards. This
-              includes a multi-visit study of how body composition (BMI) changes signal quality across radial and
-              carotid sites.</p>
+              tonometry, and blood pressure, and validating derived parameters against those standards, including a
+              multi-visit study of how body composition (BMI) changes signal quality across radial and carotid
+              sites.</p>
             <div class="tags"><span>IRB / human subjects</span><span>REDCap</span><span>Clinical reference validation</span><span>Cardiac rehab cohort</span></div>
-          </div>
+            <div class="figslot">Figure slot — add <code>images/fig-clinical.jpg</code> (study setup or validation plot)</div>
+          </div></div>
         </div>
 
+      </div>
+
+      <!-- optional interactive scan/signal viewer -->
+      <div class="viewer">
+        <div class="viewer-box">
+          <div style="font-size:.78rem;color:var(--trace-deep);font-weight:600;margin-bottom:12px">Signal viewer — drag to scrub through a recording</div>
+          <div class="viewer-stage" id="stage">
+            <span id="stage-ph">Add frame images named <code>images/signal-1.png</code> … <code>signal-N.png</code> to enable this viewer.</span>
+            <img id="stage-img" alt="Signal frame">
+          </div>
+          <div class="viewer-controls">
+            <input type="range" id="scrub" min="1" max="12" value="1">
+            <span class="slice" id="slicelabel">frame 1 / 12</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PUBLICATIONS -->
+  <!-- 04 PUBLICATIONS -->
   <section id="papers">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">03</span><span class="sec-kicker">6 peer-reviewed · 4 first-author</span></div>
+      <div class="sec-head"><span class="sec-num">04</span><span class="sec-kicker">6 peer-reviewed · 4 first-author</span></div>
       <h2>Publications</h2>
       <div class="pubs">
+        <div class="pubfilter">
+          <button data-f="all" class="active">All</button>
+          <button data-f="journal">Journal</button>
+          <button data-f="conf">Conference</button>
+        </div>
 
         <div class="yeargroup">
           <div class="yr">2026</div>
-          <div class="pub">
+          <div class="pub" data-type="journal">
             <div class="venue">Medical Sensors &amp; Imaging (IOP) · in press</div>
             <h3>Radial and carotid arterial pulse signals for assessing cardiovascular function at rest and during post-exercise recovery in a heart transplant patient: a case study</h3>
             <div class="auth"><b>M. M. Rahman</b>, M. Hasan, J. F. May, J. M. Herre, L. Reynolds, Z. Hao</div>
@@ -382,7 +534,7 @@
 
         <div class="yeargroup">
           <div class="yr">2025</div>
-          <div class="pub">
+          <div class="pub" data-type="journal">
             <div class="venue">Sensors 25(18):5710 · Part I</div>
             <h3>An Analytical Model of Motion Artifacts in a Measured Arterial Pulse Signal — Part I: Accelerometers and PPG Sensors</h3>
             <div class="auth"><b>M. M. Rahman</b>, et al.</div>
@@ -394,7 +546,7 @@
   journal = {Sensors}, volume = {25}, number = {18}, pages = {5710}, year = {2025},
   doi     = {10.3390/s25185710}}</pre>
           </div>
-          <div class="pub">
+          <div class="pub" data-type="journal">
             <div class="venue">Sensors 25(18):5700 · Part II</div>
             <h3>An Analytical Model of Motion Artifacts in a Measured Arterial Pulse Signal — Part II: Tactile Sensors</h3>
             <div class="auth"><b>M. M. Rahman</b>, et al.</div>
@@ -406,7 +558,7 @@
   journal = {Sensors}, volume = {25}, number = {18}, pages = {5700}, year = {2025},
   doi     = {10.3390/s25185700}}</pre>
           </div>
-          <div class="pub">
+          <div class="pub" data-type="journal">
             <div class="venue">Biosensors 15(9):578</div>
             <h3>Motion Artifacts At-Rest in Measured Arterial Pulse Signals: Time-Varying Amplitude in Each Harmonic and Non-Flat Harmonic-MA-Coupled Baseline</h3>
             <div class="auth"><b>M. M. Rahman</b>, et al. <span class="tag">Q1</span></div>
@@ -417,7 +569,7 @@
   journal = {Biosensors}, volume = {15}, number = {9}, pages = {578}, year = {2025},
   doi     = {10.3390/bios15090578}}</pre>
           </div>
-          <div class="pub">
+          <div class="pub" data-type="journal">
             <div class="venue">ASME J. Eng. Sci. Med. Diagn. Ther. 9(1):011207</div>
             <h3>Pulse Measurement Alters the True Pulse Signal in an Artery: A Coupled String-SDOF Model</h3>
             <div class="auth">S. Toraskar, <b>M. M. Rahman</b>, Z. Hao</div>
@@ -434,7 +586,7 @@
 
         <div class="yeargroup">
           <div class="yr">2023</div>
-          <div class="pub">
+          <div class="pub" data-type="journal">
             <div class="venue">ASME J. Eng. Sci. Med. Diagn. Ther. 6(1):011008</div>
             <h3>Axial Wall Displacement at the Common Carotid Artery is Associated With the Lamb Waves</h3>
             <div class="auth">Z. Hao, <b>M. M. Rahman</b>, et al.</div>
@@ -451,7 +603,7 @@
 
         <div class="yeargroup">
           <div class="yr">2021 · 2020 — Conference proceedings</div>
-          <div class="pub">
+          <div class="pub" data-type="conf">
             <div class="venue">IEEE EMBC 2021 · pp. 1284–1287</div>
             <h3>Measurement of Post-Exercise Response of Local Arterial Parameters Using an Adjustable Microfluidic Tactile Sensor</h3>
             <div class="auth"><b>M. M. Rahman</b>, et al.</div>
@@ -463,7 +615,7 @@
   booktitle = {IEEE EMBC}, pages = {1284--1287}, year = {2021},
   doi       = {10.1109/EMBC46164.2021.9630432}}</pre>
           </div>
-          <div class="pub">
+          <div class="pub" data-type="conf">
             <div class="venue">ASME IMECE 2020 · V005T05A079</div>
             <h3>Improved Vibration-Model-Based Analysis for Estimation of Arterial Parameters From Noninvasively Measured Arterial Pulse Signals</h3>
             <div class="auth"><b>M. M. Rahman</b>, et al.</div>
@@ -477,19 +629,89 @@
           </div>
         </div>
 
-        <p style="font-size:.84rem;color:var(--ink-faint);margin-top:24px">
+        <p style="font-size:.83rem;color:var(--ink-faint);margin-top:22px">
           Two 2026 preprints (Subject-Specific Cardiovascular Signatures, Parts I &amp; II) are under review.
-          Full list on <a href="https://scholar.google.com/" style="color:var(--trace-deep)">Google Scholar</a>.</p>
+          Full list on <a href="https://scholar.google.com/citations?user=8UTf-BEAAAAJ&hl=en&authuser=1" style="color:var(--trace-deep)">Google Scholar</a>.</p>
       </div>
     </div>
   </section>
 
-  <!-- CVs / AUDIENCES -->
+  <!-- 05 BUILD & VALIDATE -->
+  <section id="build">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">05</span><span class="sec-kicker">Translation</span></div>
+      <h2>How it gets built and validated</h2>
+      <div class="sec-body" style="margin-bottom:4px">
+        <p>A sensor that only works on the bench has been demonstrated, not validated. My results are produced under
+          conditions that mirror real use: custom hardware, human-subject protocols, and comparison against the
+          clinical instruments a device would have to replace.</p>
+      </div>
+      <div class="build">
+        <div class="card">
+          <h3>End-to-end device fabrication</h3>
+          <p>Every layer is built in-house: photolithographic electrodes, SU-8 and 3D-printed microchannel molds,
+            PDMS casting and plasma bonding, and custom KiCad analog front-end PCBs. Owning the whole stack means a
+            problem in the signal can be traced to the layer that caused it.</p>
+        </div>
+        <div class="card">
+          <h3>Validation against clinical references</h3>
+          <p>Sensor-derived parameters — PWV, augmentation index, arterial elasticity — are checked against Doppler
+            ultrasound, applanation tonometry, and brachial blood pressure on the same subjects, at rest and across
+            six post-exercise time points.</p>
+        </div>
+        <div class="card">
+          <h3>Human-subject protocols &amp; governance</h3>
+          <p>IRB-approved studies with healthy volunteers, cardiac-rehabilitation patients at Sentara, and a
+            heart-transplant case study; REDCap data management; CITI-certified in biomedical human-subjects
+            research through 2029.</p>
+          <p class="note">Regulatory-compliant data handling is part of the method, not paperwork bolted on after.</p>
+        </div>
+        <div class="card">
+          <h3>Verification &amp; characterization</h3>
+          <p>Drafted and executed V&amp;V test protocols; characterized sensitivity, linearity, frequency response,
+            and repeatability under controlled bench conditions before any clinical use.</p>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="row"><div class="k">Fabrication</div><div class="v">Photolithography · Au/Cr thin-film deposition · SU-8 &amp; 3D-printed molds · soft lithography · O₂ plasma bonding</div></div>
+        <div class="row"><div class="k">Electronics / DAQ</div><div class="v">KiCad AFE (transimpedance amp, demodulator, filters) · Multisim · NI DAQ (PCI-6133) · LabVIEW real-time</div></div>
+        <div class="row"><div class="k">Signal processing</div><div class="v">MATLAB · Python · FFT · CWT/DWT · EMD · HHT · HVD · complex demodulation · hybrid EMD–HVD / CDM–HVD</div></div>
+        <div class="row"><div class="k">Design / CAD</div><div class="v">AutoCAD · Autodesk Inventor · Simulink</div></div>
+        <div class="row"><div class="k">Clinical / stats</div><div class="v">IRB protocol design · REDCap · SPSS (t-tests, ANOVA) · Doppler, tonometry, BP reference measurement</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 TRAJECTORY -->
+  <section id="trajectory">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">06</span><span class="sec-kicker">Where this goes</span></div>
+      <h2>Trajectory</h2>
+      <div class="sec-body" style="margin-bottom:2px">
+        <p>What is established, what is running now, and what I would build next given my own lab or an R&amp;D team.</p>
+      </div>
+      <div class="traj">
+        <h3>Established</h3>
+        <div class="item"><div class="t">End-to-end microfluidic tactile sensor</div><div class="d">Fabrication, custom readout electronics, and bench characterization for noninvasive arterial pulse acquisition.</div><div class="w">2019–present · multiple papers</div></div>
+        <div class="item"><div class="t">Analytical motion-artifact model</div><div class="d">A written-down account of how baseline drift and time-varying system parameters distort a measured pulse.</div><div class="w">2021–2025 · Sensors / Biosensors 2025</div></div>
+        <div class="item"><div class="t">Time-frequency parameter estimation</div><div class="d">Hybrid EMD–HVD and CDM–HVD methods for beat-by-beat instantaneous arterial parameters.</div><div class="w">2020–present · dissertation</div></div>
+        <h3>In progress</h3>
+        <div class="item"><div class="t">Subject-specific cardiovascular signatures</div><div class="d">Characterizing how arterial pulse signals differ across heart-disease patients — general and special cases.</div><div class="w">2026 · two preprints under review</div></div>
+        <div class="item"><div class="t">Body-composition effects on signal quality</div><div class="d">A multi-visit study of how BMI changes wearable pulse quality at radial and carotid sites.</div><div class="w">ongoing</div></div>
+        <h3>Next questions</h3>
+        <div class="item"><div class="t">Artifact-aware wearables that flag their own bad readings</div><div class="d">Turning the motion-artifact model into a real-time confidence signal, so a wearable can say when a measurement should not be trusted.</div></div>
+        <div class="item"><div class="t">Continuous out-of-clinic monitoring for rehabilitation</div><div class="d">Extending validated parameters to unsupervised home use, where the recovery a rehab program cares about actually happens.</div></div>
+        <div class="item"><div class="t">Sensor fusion across modalities</div><div class="d">Combining tactile, accelerometer, and optical sensing so each covers the others' failure modes.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 CVs -->
   <section id="cvs">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">04</span><span class="sec-kicker">Pick the version that fits</span></div>
+      <div class="sec-head"><span class="sec-num">07</span><span class="sec-kicker">Pick the version that fits</span></div>
       <h2>CV &amp; résumé, by destination</h2>
-      <div class="sec-body" style="margin-bottom:6px">
+      <div class="sec-body" style="margin-bottom:2px">
         <p>My work spans research, teaching, and device development, so I keep a version tailored to each path.
           Open whichever matches what you're hiring for.</p>
       </div>
@@ -497,43 +719,54 @@
         <a href="docs/resume-industry.pdf" target="_blank" rel="noopener">
           <div class="role">Industry résumé</div>
           <div class="desc">1–2 pages. Device development, microfabrication, electronics, V&amp;V, and regulatory/human-subjects experience for R&amp;D and medical-device roles.</div>
-          <div class="go">Open PDF →</div>
-        </a>
+          <div class="go">Open PDF →</div></a>
         <a href="docs/resume-research.pdf" target="_blank" rel="noopener">
           <div class="role">Research résumé</div>
           <div class="desc">3 pages. Full project detail across fabrication, modeling, signal processing, and clinical studies — for postdoc and R&amp;D scientist positions.</div>
-          <div class="go">Open PDF →</div>
-        </a>
+          <div class="go">Open PDF →</div></a>
         <a href="docs/cv-assistant-professor.pdf" target="_blank" rel="noopener">
           <div class="role">Academic CV — research faculty</div>
           <div class="desc">Complete CV with publications, funding, and research program, oriented toward tenure-track assistant professor searches.</div>
-          <div class="go">Open PDF →</div>
-        </a>
+          <div class="go">Open PDF →</div></a>
         <a href="docs/cv-teaching.pdf" target="_blank" rel="noopener">
           <div class="role">Academic CV — teaching-focused</div>
           <div class="desc">Teaching-forward CV: 6+ years of instruction, course development, and mentoring for teaching-focused institutions.</div>
-          <div class="go">Open PDF →</div>
-        </a>
+          <div class="go">Open PDF →</div></a>
       </div>
     </div>
   </section>
 
-  <!-- TEACHING -->
+  <!-- 08 TEACHING -->
   <section id="teaching">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">05</span><span class="sec-kicker">6+ years</span></div>
+      <div class="sec-head"><span class="sec-num">08</span><span class="sec-kicker">6+ years</span></div>
       <h2>Teaching</h2>
-      <div class="sec-body" style="margin-bottom:8px">
-        <p>Before and during my PhD I have taught across engineering fundamentals — as instructor of record for a
-          materials-science lab at ODU, and earlier developing and teaching 14 undergraduate courses in electronics,
-          instrumentation, and DSP in Bangladesh. My teaching interest is biomedical instrumentation and biosignal
-          processing, where I can bring the sensing and signal-analysis work directly into the classroom.</p>
+      <div class="sec-body" style="margin-bottom:2px">
+        <p>As instructor of record for a materials-science lab at ODU, and earlier developing and teaching 14
+          undergraduate courses in electronics, instrumentation, and DSP in Bangladesh. My teaching interest is
+          biomedical instrumentation and biosignal processing, where I can bring the sensing and signal-analysis
+          work directly into the classroom.</p>
       </div>
       <div class="teach-list">
-        <div class="row"><span class="c">MAE 203 — Materials Science Lab <em style="color:var(--ink-faint);font-style:normal;font-size:.82rem">· instructor of record</em></span><span class="w">ODU · 2022–2025</span></div>
-        <div class="row"><span class="c">MAE 205 Dynamics · 220 Solid Mechanics · 201 Materials · 434W Design</span><span class="w">ODU · TA · 2019–2025</span></div>
-        <div class="row"><span class="c">14 undergraduate courses — electronics, instrumentation, DSP, microprocessors</span><span class="w">ADUST · 2014–2017</span></div>
-        <div class="row"><span class="c">Intro EE &amp; Microprocessor / Assembly</span><span class="w">DIIT · 2016–2017</span></div>
+        <div class="row"><span>MAE 203 — Materials Science Lab · instructor of record</span><span class="w">ODU · 2022–2025</span></div>
+        <div class="row"><span>MAE 205 Dynamics · 220 Solid Mechanics · 201 Materials · 434W Design</span><span class="w">ODU · TA · 2019–2025</span></div>
+        <div class="row"><span>14 undergraduate courses — electronics, instrumentation, DSP, microprocessors</span><span class="w">ADUST · 2014–2017</span></div>
+        <div class="row"><span>Intro EE &amp; Microprocessor / Assembly</span><span class="w">DIIT · 2016–2017</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 NEWS -->
+  <section id="news">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">09</span><span class="sec-kicker">Recent</span></div>
+      <h2>News</h2>
+      <div class="news">
+        <div class="row"><div class="when">2026</div><div class="what">Case study on a heart-transplant patient accepted in <em>Medical Sensors &amp; Imaging</em> (IOP).</div></div>
+        <div class="row"><div class="when">2026</div><div class="what">Two preprints on subject-specific cardiovascular signatures (Parts I &amp; II) posted, under review.</div></div>
+        <div class="row"><div class="when">2025</div><div class="what">Analytical motion-artifact model published across <em>Sensors</em> (Parts I &amp; II) and <em>Biosensors</em>.</div></div>
+        <div class="row"><div class="when">2021</div><div class="what">Post-exercise arterial-parameter measurement presented at IEEE EMBC.</div></div>
+        <div class="row"><div class="when">2020–</div><div class="what">Volunteer with the Virginia Medical Reserve Corps — COVID-19 clinics and community health screening.</div></div>
       </div>
     </div>
   </section>
@@ -541,7 +774,7 @@
   <!-- CONTACT -->
   <section id="contact" class="contact">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">06</span><span class="sec-kicker" style="color:#7c8f8b">On the market for 2026</span></div>
+      <div class="sec-head"><span class="sec-num">✦</span><span class="sec-kicker" style="color:#7c8f8b">On the market for 2026</span></div>
       <h2>Let's talk.</h2>
       <div class="sec-body">
         <p>I'm seeking positions starting in 2026 across industry R&amp;D, research, and academia — anywhere the work
@@ -558,7 +791,7 @@
           <h4>Elsewhere</h4>
           <a href="https://scholar.google.com/citations?user=8UTf-BEAAAAJ&hl=en&authuser=1" target="_blank" rel="noopener">Google Scholar</a>
           <a href="https://orcid.org/0000-0001-8405-2227" target="_blank" rel="noopener">ORCID</a>
-          <!--<a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>-->
+          <a href="https://github.com/mrahm009" target="_blank" rel="noopener">GitHub</a>
           <a href="https://www.linkedin.com/in/md-mahfuzur-rahman-1aa4a412a/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
@@ -573,29 +806,81 @@
   // BibTeX toggles
   document.querySelectorAll('.bibtoggle').forEach(function(btn){
     btn.addEventListener('click', function(){
-      var bib = btn.nextElementSibling;
-      var open = bib.classList.toggle('open');
-      btn.textContent = open ? 'Hide BibTeX' : 'Show BibTeX';
-      btn.setAttribute('aria-expanded', open);
+      var bib=btn.nextElementSibling, open=bib.classList.toggle('open');
+      btn.textContent=open?'Hide BibTeX':'Show BibTeX'; btn.setAttribute('aria-expanded',open);
     });
   });
+
   // Mobile nav
-  var tog = document.querySelector('.nav-toggle'), list = document.getElementById('navlist');
-  tog.addEventListener('click', function(){
-    var open = list.classList.toggle('open');
-    tog.setAttribute('aria-expanded', open);
+  var tog=document.querySelector('.nav-toggle'), list=document.getElementById('navlist');
+  tog.addEventListener('click',function(){var o=list.classList.toggle('open');tog.setAttribute('aria-expanded',o);});
+  list.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){list.classList.remove('open');tog.setAttribute('aria-expanded',false);});});
+
+  // Program map: project details + lane filter
+  var projects={
+    p1:{meta:'2019–present · NSF #1936005 · Fabrication',t:'Soft microfluidic tactile sensor & analog readout',
+        d:'End-to-end PDMS microfluidic sensors — photolithographic electrodes, SU-8 and 3D-printed molds, plasma bonding — with custom KiCad analog front-end PCBs. 1.5 mm transducer spacing, 0.2 µm displacement resolution.'},
+    p2:{meta:'2021–2025 · Sensors / Biosensors 2025 · Modeling',t:'Analytical model of motion artifacts',
+        d:'A mathematical model relating baseline drift and time-varying system parameters to the measured pulse, so distortion can be separated rather than blindly filtered.'},
+    p3:{meta:'2020–present · Dissertation · Signal processing',t:'Time-frequency parameter estimation',
+        d:'EMD, complex demodulation, HVD, wavelets and HHT — including hybrid masked EMD–HVD and CDM–HVD — for beat-by-beat instantaneous arterial parameters from nonstationary signals.'},
+    p4:{meta:'2021–present · IRB-approved · Clinical validation',t:'Multi-BMI & cardiac-rehab studies',
+        d:'IRB-approved human-subject studies validating sensor-derived PWV, augmentation index and elasticity against Doppler ultrasound, tonometry and blood pressure, including a multi-visit BMI study.'}
+  };
+  var detail=document.getElementById('detail');
+  function showProject(id){
+    var p=projects[id]; if(!p)return;
+    detail.innerHTML='<div class="meta">'+p.meta+'</div><h3>'+p.t+'</h3><p>'+p.d+'</p>';
+    document.querySelectorAll('.bar').forEach(function(b){b.classList.toggle('sel',b.dataset.id===id);});
+  }
+  document.querySelectorAll('.bar[data-id]').forEach(function(b){
+    if(b.style.opacity==='0')return;
+    b.addEventListener('click',function(){showProject(b.dataset.id);});
   });
-  list.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ list.classList.remove('open'); tog.setAttribute('aria-expanded', false); });
+  document.querySelectorAll('.map-filters button').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('.map-filters button').forEach(function(x){x.classList.remove('active');});
+      btn.classList.add('active');
+      var lane=btn.dataset.lane;
+      document.querySelectorAll('#lanes .lane').forEach(function(l){
+        var match=(lane==='all'||l.dataset.lane===lane);
+        l.querySelectorAll('.bar').forEach(function(b){b.classList.toggle('dim',!match);});
+      });
+    });
   });
-  // Hero pulse: single deliberate draw-on animation, respecting reduced motion
+
+  // Publication filter
+  document.querySelectorAll('.pubfilter button').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('.pubfilter button').forEach(function(x){x.classList.remove('active');});
+      btn.classList.add('active');
+      var f=btn.dataset.f;
+      document.querySelectorAll('.pub').forEach(function(p){
+        p.style.display=(f==='all'||p.dataset.type===f)?'':'none';
+      });
+      document.querySelectorAll('.yeargroup').forEach(function(g){
+        var vis=g.querySelectorAll('.pub:not([style*="none"])').length;
+        g.style.display=vis?'':'none';
+      });
+    });
+  });
+
+  // Signal viewer (works once you add images/signal-1.png ...)
+  var scrub=document.getElementById('scrub'), img=document.getElementById('stage-img'),
+      ph=document.getElementById('stage-ph'), lbl=document.getElementById('slicelabel');
+  function updateFrame(){
+    var n=scrub.value; lbl.textContent='frame '+n+' / '+scrub.max;
+    img.src='images/signal-'+n+'.png';
+    img.onload=function(){img.style.display='block';ph.style.display='none';};
+    img.onerror=function(){img.style.display='none';ph.style.display='block';};
+  }
+  scrub.addEventListener('input',updateFrame); updateFrame();
+
+  // Hero pulse: single draw-on, respect reduced motion
   if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    var p = document.getElementById('ecg');
-    if(p){ var len = p.getTotalLength();
-      p.style.strokeDasharray = len; p.style.strokeDashoffset = len;
-      p.animate([{strokeDashoffset:len},{strokeDashoffset:0}],
-        {duration:2600, easing:'ease-out', fill:'forwards'});
-    }
+    var pth=document.getElementById('ecg');
+    if(pth){var len=pth.getTotalLength();pth.style.strokeDasharray=len;pth.style.strokeDashoffset=len;
+      pth.animate([{strokeDashoffset:len},{strokeDashoffset:0}],{duration:2600,easing:'ease-out',fill:'forwards'});}
   }
 </script>
 </body>
