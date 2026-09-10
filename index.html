@@ -204,6 +204,17 @@
   .aud .go{font-family:var(--mono);font-size:.72rem;color:var(--accent);margin-top:14px;display:inline-block}
 
   /* teaching / news lists */
+  .teach-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:8px}
+  .teach-cols .narr p{margin:0 0 16px;color:var(--ink-soft)}
+  .teach-cols .narr p strong{color:var(--ink);font-weight:700}
+  .course-group{margin-bottom:8px}
+  .course-group .cg-head{font-family:var(--mono);font-size:.68rem;color:var(--ink-mute);text-transform:uppercase;letter-spacing:.04em;padding:6px 0 4px}
+  .course{display:grid;grid-template-columns:90px 1fr auto;gap:14px;align-items:baseline;padding:11px 0;border-top:1px solid var(--line)}
+  .course .code{font-family:var(--mono);font-size:.78rem;color:var(--accent)}
+  .course .cname{font-family:var(--serif);font-size:1.02rem;color:var(--ink)}
+  .course .cterm{font-family:var(--mono);font-size:.7rem;color:var(--ink-faint);text-align:right;white-space:nowrap}
+  @media(max-width:860px){.teach-cols{grid-template-columns:1fr;gap:28px}}
+  @media(max-width:620px){.course{grid-template-columns:72px 1fr;gap:8px}.course .cterm{grid-column:2;text-align:left;margin-top:2px}}
   .rowlist .row{display:grid;grid-template-columns:1fr auto;gap:20px;padding:13px 0;border-top:1px solid var(--line);font-size:.94rem;align-items:baseline}
   .rowlist .row:first-child{border-top:none}
   .rowlist .row .w{font-family:var(--mono);font-size:.68rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.03em;text-align:right;white-space:nowrap}
@@ -750,12 +761,48 @@
   <section id="teaching">
     <div class="wrap">
       <div class="sec-top"><span class="sec-num">09</span><h2>Teaching</h2><span class="sec-kick">6+ years</span></div>
-      <div class="body" style="margin-bottom:14px"><p>As instructor of record for a materials-science lab at ODU, and earlier developing and teaching 14 undergraduate courses in electronics, instrumentation, and DSP in Bangladesh. My teaching interest is biomedical instrumentation and biosignal processing, where I can bring the sensing and signal-analysis work directly into the classroom.</p></div>
-      <div class="rowlist">
-        <div class="row"><span>MAE 203 — Materials Science Lab · instructor of record</span><span class="w">ODU · 2022–2025</span></div>
-        <div class="row"><span>MAE 205 Dynamics · 220 Solid Mechanics · 201 Materials · 434W Design</span><span class="w">ODU TA · 2019–2025</span></div>
-        <div class="row"><span>14 undergraduate courses — electronics, instrumentation, DSP, microprocessors</span><span class="w">ADUST · 2014–2017</span></div>
-        <div class="row"><span>Intro EE &amp; Microprocessor / Assembly</span><span class="w">DIIT · 2016–2017</span></div>
+      <div class="teach-cols">
+        <div class="narr">
+          <p>Six-plus years across engineering fundamentals — instrumentation, electronics, circuits, digital
+            signal processing, and laboratory-centered instruction — including instructor-of-record responsibility
+            for a materials-science lab at ODU and, earlier, developing and teaching fourteen undergraduate courses
+            in Bangladesh. Serving as primary instructor added the parts TA work does not touch: lab design,
+            rubric-based assessment, LMS course management, and ABET outcome documentation.</p>
+          <p>I would develop <strong>Biomedical Instrumentation &amp; Biosignal Processing</strong>, covering sensor
+            design, analog front-end electronics, and time-frequency analysis of physiological signals, with
+            laboratory modules in MATLAB, Python, and LabVIEW built directly from my sensing and signal-analysis
+            research.</p>
+          <p>Courses I can teach immediately: Circuits &amp; Electronics, Instrumentation &amp; Measurement, Signals
+            &amp; Systems / Digital Signal Processing, Dynamics, Solid Mechanics, Materials Science, Microprocessors,
+            Engineering Mathematics, and experimental / laboratory methods.</p>
+        </div>
+        <div class="courses">
+          <div class="course-group">
+            <div class="cg-head">Instructor of record · Old Dominion University</div>
+            <div class="course"><span class="code">MAE 203</span><span class="cname">Materials Science Laboratory</span><span class="cterm">2022–2025</span></div>
+          </div>
+          <div class="course-group">
+            <div class="cg-head">Teaching assistant · Old Dominion University</div>
+            <div class="course"><span class="code">MAE 434W</span><span class="cname">Project Design &amp; Management I</span><span class="cterm">2019–2025</span></div>
+            <div class="course"><span class="code">MAE 220</span><span class="cname">Solid Mechanics II</span><span class="cterm">2019–2025</span></div>
+            <div class="course"><span class="code">MAE 205</span><span class="cname">Dynamics</span><span class="cterm">2019–2025</span></div>
+            <div class="course"><span class="code">MAE 201</span><span class="cname">Materials Science</span><span class="cterm">2019–2025</span></div>
+          </div>
+          <div class="course-group">
+            <div class="cg-head">Lecturer · ADUST, Bangladesh</div>
+            <div class="course"><span class="code">ETE 360</span><span class="cname">Digital Signal Processing</span><span class="cterm">2014–2017</span></div>
+            <div class="course"><span class="code">ETE 331</span><span class="cname">Instrumentation &amp; Measurement</span><span class="cterm">2014–2017</span></div>
+            <div class="course"><span class="code">ETE 324</span><span class="cname">Microprocessor &amp; Microcomputer</span><span class="cterm">2014–2017</span></div>
+            <div class="course"><span class="code">ETE 224</span><span class="cname">Electronics I–III</span><span class="cterm">2014–2017</span></div>
+            <div class="course"><span class="code">ETE 208</span><span class="cname">Electrical Circuits I &amp; II</span><span class="cterm">2014–2017</span></div>
+            <div class="course"><span class="code">+ 9</span><span class="cname">more undergraduate courses (14 total)</span><span class="cterm">2014–2017</span></div>
+          </div>
+          <div class="course-group">
+            <div class="cg-head">Part-time lecturer · DIIT, Bangladesh</div>
+            <div class="course"><span class="code">CSE 438</span><span class="cname">Microprocessor &amp; Assembly Language</span><span class="cterm">2016–2017</span></div>
+            <div class="course"><span class="code">CSE 123</span><span class="cname">Introduction to Electrical Engineering</span><span class="cterm">2016–2017</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
