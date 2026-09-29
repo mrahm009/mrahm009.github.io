@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Md Mahfuzur Rahman — Trustworthy wearable cardiovascular sensing</title>
-<meta name="description" content="Md Mahfuzur Rahman builds wearable cardiovascular sensing end to end — soft microfluidic tactile sensors, custom analog electronics, and the time-frequency algorithms that make out-of-clinic arterial measurement trustworthy. PhD candidate, Old Dominion University.">
+<title>Md Mahfuzur Rahman — Noninvasive cardiovascular sensing</title>
+<meta name="description" content="Md Mahfuzur Rahman, PhD — noninvasive cardiovascular sensing: soft microfluidic tactile sensors, analog front-end electronics, and time-frequency signal processing of arterial pulse signals. Adjunct Assistant Professor, Old Dominion University.">
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Md Mahfuzur Rahman — Trustworthy wearable cardiovascular sensing">
-<meta property="og:description" content="From microfabrication to algorithms: making a noninvasive arterial measurement honest.">
+<meta property="og:title" content="Md Mahfuzur Rahman — Noninvasive cardiovascular sensing">
+<meta property="og:description" content="Noninvasive cardiovascular sensing: microfluidic tactile sensor, analog electronics, and signal processing of arterial pulse signals.">
 <meta property="og:image" content="images/portrait.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,7 +50,6 @@
 
   /* hero */
   .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-  .pulse-bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.32}
   .hero-inner{max-width:var(--maxw);margin:0 auto;padding:78px 32px 64px;position:relative}
   .eyebrow{font-family:var(--mono);font-size:.72rem;color:var(--ink-mute);letter-spacing:.06em;
     text-transform:uppercase;margin-bottom:26px}
@@ -81,10 +80,10 @@
 
   /* section frame */
   section{padding:70px 0;border-bottom:1px solid var(--line)}
-  .sec-top{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:end;
+  .sec-top{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:end;
     border-bottom:1.5px solid var(--line-strong);padding-bottom:14px;margin-bottom:30px}
   .sec-num{font-family:var(--mono);font-size:.8rem;color:var(--accent);font-weight:500}
-  .sec-top h2{font-size:clamp(1.7rem,3.6vw,2.5rem);letter-spacing:-.03em;grid-column:2}
+  .sec-top h2{font-size:clamp(1.7rem,3.6vw,2.5rem);letter-spacing:-.03em;grid-column:1}
   .sec-kick{font-family:var(--mono);font-size:.7rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.05em}
   .body{max-width:68ch}
   .body p{margin:0 0 18px;color:var(--ink-soft)}
@@ -247,7 +246,7 @@
     nav ul{display:none;position:absolute;top:100%;right:0;left:0;background:var(--paper);flex-direction:column;gap:0;border-bottom:1px solid var(--line);padding:8px 20px}
     nav ul.open{display:flex}
     nav li{border-top:1px solid var(--line)} nav ul a{display:block;padding:12px 0}
-    .sec-top{grid-template-columns:auto 1fr;gap:12px}
+    .sec-top{grid-template-columns:1fr;gap:12px}
     .sec-top h2{grid-column:1/-1}
     .lane{grid-template-columns:70px 1fr;gap:10px}.axis{grid-template-columns:70px 1fr;gap:10px}
     .stack .row{grid-template-columns:1fr;gap:3px}
@@ -285,28 +284,20 @@
 
   <!-- HERO -->
   <section class="hero" style="padding:0">
-    <svg class="pulse-bg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <path id="ecg" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.5"
-        d="M0,210 L180,210 200,210 210,205 220,214 232,150 244,262 256,196 268,210 300,210
-           420,210 440,210 450,205 460,214 472,150 484,262 496,196 508,210 540,210
-           660,210 680,210 690,205 700,214 712,150 724,262 736,196 748,210 780,210
-           900,210 920,210 930,205 940,214 952,150 964,262 976,196 988,210 1020,210
-           1140,210 1200,210"/>
-    </svg>
     <div class="hero-inner">
-      <div class="eyebrow">Wearable cardiovascular biosensing · ODU</div>
-      <h1>Trustworthy wearable sensing for <b>cardiovascular</b> health, outside the clinic.</h1>
-      <p class="lede">A clinic-grade arterial signal is only useful if you can capture it outside the clinic — <em>and trust it.</em></p>
-      <p class="sub">I build noninvasive cardiovascular sensing systems across the whole stack: soft microfluidic
-        tactile sensors fabricated by hand, the custom analog electronics that read them, and the time-frequency
-        algorithms that pull real arterial parameters out of noisy, moving, real-world signals. The through-line of
-        my work is <strong>making a measurement honest</strong> — separating what the artery is doing from what the
-        motion, the sensor, and the body add on top.</p>
+      <div class="eyebrow">Noninvasive cardiovascular sensing · ODU</div>
+      <h1>Noninvasive <b>cardiovascular</b> sensing and signal processing.</h1>
+      <p class="lede">Soft microfluidic tactile sensors, analog front-end electronics, and time-frequency analysis of the arterial pulse.</p>
+      <p class="sub">My PhD research covered the full sensing chain: a soft microfluidic tactile sensor for measuring
+        the arterial pulse at the radial and carotid arteries, the analog front-end electronics and data acquisition
+        to read it, and signal-processing methods to extract cardiovascular parameters from the recorded signals.
+        I also modeled how motion artifacts distort the measured pulse, and I tested the sensor against clinical
+        reference instruments in IRB-approved human-subject studies.</p>
       <div class="idcard">
         <img src="images/portrait.jpg" alt="Md Mahfuzur Rahman" onerror="this.style.display='none'">
         <div class="who">
-          <strong>Md Mahfuzur Rahman</strong>
-          <span>PhD candidate, Mechanical &amp; Aerospace Engineering · Old Dominion University · Advisor: Dr. Zhili Hao</span>
+          <strong>Md Mahfuzur Rahman, PhD</strong>
+          <span>Adjunct Assistant Professor, Electrical Engineering Technology · Old Dominion University · PhD advisor: Dr. Zhili Hao</span>
         </div>
       </div>
       <div class="links">
@@ -327,54 +318,51 @@
       <div class="stat"><div class="l">Advisor</div><div class="n">Dr. Zhili Hao</div></div>
       <div class="stat"><div class="l">Funding</div><div class="n">NSF #1936005</div></div>
       <div class="stat"><div class="l">Sensor resolution</div><div class="n">1.5 mm / 0.2 µm</div></div>
-      <div class="stat"><div class="l">PhD conferral</div><div class="n">August 2026</div></div>
-      <div class="stat"><div class="l">Open to</div><div class="n">Industry · research · faculty</div></div>
+      <div class="stat"><div class="l">PhD conferred</div><div class="n">August 2026</div></div>
+      <div class="stat"><div class="l">Current role</div><div class="n">Adjunct Assistant Professor, ODU</div></div>
     </div>
   </div>
 
   <!-- OVERVIEW -->
   <section id="overview">
     <div class="wrap">
-      <div class="sec-top"><span class="sec-num">◆</span><h2>What I work on</h2><span class="sec-kick">A short overview</span></div>
+      <div class="sec-top"><h2>What I work on</h2><span class="sec-kick">A short overview</span></div>
       <div class="body" style="margin-bottom:20px">
-        <p>What the medical problem is, what data can answer it, what I designed and validated, and what a clinician
-          gets when it is deployed. The figures throughout this page come from my own papers.</p>
+        <p>Cardiovascular measurements in the clinic rely on instruments that stay in the hospital, such as Doppler
+          ultrasound and applanation tonometry. My work is on capturing the same information, the arterial pulse and
+          the parameters derived from it, with a small noninvasive sensor that can be used outside that setting. The
+          main challenge is that a wearable measurement is affected by movement, by the mechanics of the skin, tape,
+          and sensor, and by differences between people; a large part of my work is understanding and correcting
+          these effects so the extracted parameters are reliable.</p>
       </div>
       <div class="media-frame">
-        <!-- Replace with a real clip later:
-             <video controls poster="images/overview-poster.jpg"><source src="images/overview.webm" type="video/webm"></video> -->
-        <div class="media-ph">
-          <span class="big">A ~90-second overview goes here</span>
-          <span>Record a short lab/screen walkthrough, save it as <code>images/overview.webm</code>, and swap it in.</span>
-        </div>
+        <img src="images/research-diagram.png" alt="Overview of my research: device prototyping, signal processing, feature extraction, and clinical studies"
+             style="width:100%;display:block;background:var(--white)"
+             onerror="this.parentNode.innerHTML='&lt;div class=&quot;media-ph&quot;&gt;&lt;span class=&quot;big&quot;&gt;Add images/research-diagram.png&lt;/span&gt;&lt;span&gt;Save your research diagram there and it will show here.&lt;/span&gt;&lt;/div&gt;'">
       </div>
-      <p class="cap">Soft microfluidic tactile sensor at the radial and carotid arteries — acquisition, modeling, and validation against clinical references.</p>
+      <p class="cap">Overview of my research: device prototyping, signal processing, feature extraction, and clinical studies.</p>
     </div>
   </section>
 
   <!-- HOW I WORK -->
   <section id="approach">
     <div class="wrap">
-      <div class="sec-top"><span class="sec-num">01</span><h2>How I work</h2><span class="sec-kick">Framing</span></div>
+      <div class="sec-top"><h2>How I work</h2><span class="sec-kick">Framing</span></div>
       <div class="body">
-        <p>I came to cardiovascular biosensing from photonics and electronics — a master's designing optical
-          structures for communication, then years teaching circuits, instrumentation, and signal processing. That
-          path is the reason I work across the whole stack rather than one slice of it: I am as comfortable
-          patterning electrodes and laying out an analog front-end as I am deriving a time-frequency algorithm. The
-          questions below are ones I can follow from the silicon to the signal to the patient.</p>
-        <p>Cardiovascular disease is monitored with instruments that live in hospitals: Doppler ultrasound,
-          applanation tonometry, arterial catheters. They are accurate and they stay put. But the moments that
-          matter for a heart patient — the recovery after exertion, the drift over weeks of rehabilitation — happen
-          at home, where none of those instruments can follow.</p>
-        <p>A wearable sensor can go there, but it inherits problems the clinic never had. The person moves. The
-          skin, the tape, and the sensor add their own mechanics to the signal. Body composition changes what the
-          waveform even looks like. A device that reports a clean-looking number under these conditions is often
-          reporting the artifact, not the artery.</p>
-        <p>My method is the same each time. Understand the physiological question. Build a sensor and the
-          electronics that can acquire it noninvasively. Then develop the signal processing that
-          <strong>separates the true arterial signal from everything the measurement adds to it</strong>, and
-          validate the result against clinical reference standards on real patients. The honesty has to be built at
-          every layer, or it is not there at all.</p>
+        <p>My background is in mechanical engineering and applied physics. During my MS I worked on optical
+          structures for communication, and before my PhD I taught circuits, instrumentation, and signal processing.
+          This is why my PhD work covered the full sensing chain rather than one part: sensor fabrication, analog
+          front-end electronics, and signal processing.</p>
+        <p>Cardiovascular measurements in the clinic use instruments such as Doppler ultrasound, applanation
+          tonometry, and arterial catheters. These stay in the hospital, so they cannot record a patient during
+          recovery after exercise or over the course of a rehabilitation program.</p>
+        <p>A wearable sensor can record in those settings, but the measurement is affected by movement, by the skin,
+          tape, and sensor mechanics, and by differences in body composition. Motion in particular does not just add
+          noise; it changes the mechanical behavior of the sensor-tissue system and distorts the pulse signal.</p>
+        <p>My PhD work followed the same steps for each project: define the physiological question, build a sensor
+          and the electronics to acquire the signal noninvasively, develop signal processing to extract the
+          physiological parameters, and compare the results against clinical reference instruments in
+          IRB-approved human-subject studies.</p>
       </div>
     </div>
   </section>
@@ -382,7 +370,7 @@
   <!-- PROGRAM MAP -->
   <section id="program">
     <div class="wrap">
-      <div class="sec-top"><span class="sec-num">02</span><h2>The program, mapped</h2><span class="sec-kick">Select a project</span></div>
+      <div class="sec-top"><h2>The program, mapped</h2><span class="sec-kick">Select a project</span></div>
       <div class="body" style="margin-bottom:6px">
         <p>Six years of work across three method families. The horizontal axis is time; the lanes are the kinds of
           problem. Click any bar to read what it was and what came out of it, or filter by method family to see the
@@ -420,17 +408,17 @@
   <!-- THREADS -->
   <section id="threads">
     <div class="wrap">
-      <div class="sec-top"><span class="sec-num">03</span><h2>What each thread found</h2><span class="sec-kick">Detail</span></div>
+      <div class="sec-top"><h2>What each thread found</h2><span class="sec-kick">Detail</span></div>
 
       <div class="thread">
-        <div class="meta">2019–present · NSF #1936005 · Fabrication</div>
-        <h3>The sensor, made by hand</h3>
-        <div class="q">Can a soft polymer sensor acquire a clinic-grade pulse noninvasively?</div>
-        <p>I fabricate soft-polymer (PDMS) microfluidic tactile sensors end to end: photolithographic Au/Cr
-          electrode patterning on Pyrex, SU-8 microchannel molds (100–150&nbsp;µm), PDMS casting and plasma bonding
-          — reaching 1.5&nbsp;mm transducer spacing and 0.2&nbsp;µm displacement resolution. I later moved to
-          3D-printed molds, cutting the fabrication cycle by removing spin-coating, UV exposure, and baking. The
-          device is read by custom KiCad analog front-end PCBs — transimpedance amplifiers, demodulation,
+        <div class="meta">NSF #1936005 · Fabrication</div>
+        <h3>The sensor, built end to end</h3>
+        <div class="q">A soft polymer sensor to measure the arterial pulse noninvasively.</div>
+        <p>I fabricated soft-polymer (PDMS) microfluidic tactile sensors end to end: photolithographic Au/Cr
+          electrode patterning on Pyrex, SU-8 microchannel molds (100–150&nbsp;µm), PDMS casting and plasma bonding,
+          reaching 1.5&nbsp;mm transducer spacing and 0.2&nbsp;µm displacement resolution. I also used 3D-printed
+          molds as an alternative to SU-8, which removed the spin-coating, UV exposure, and baking steps. The device
+          is read by custom KiCad analog front-end PCBs (transimpedance amplifiers and demodulation) with
           multi-transducer readout into NI DAQ and LabVIEW.</p>
         <div class="tags"><span>Photolithography</span><span>PDMS soft lithography</span><span>KiCad AFE</span><span>NI DAQ / LabVIEW</span></div>
         <!-- Add a figure: replace figslot with
@@ -439,41 +427,39 @@
       </div>
 
       <div class="thread">
-        <div class="meta">2021–2025 · Sensors / Biosensors 2025 · Modeling</div>
-        <h3>Modeling the motion artifact instead of hiding it</h3>
-        <div class="q">Where does the distortion in a moving pulse signal actually come from?</div>
-        <p>Rather than filter motion artifacts away and hope, I built an analytical model of where they come from —
-          relating baseline drift and a newly defined set of time-varying system parameters to the measured pulse.
-          The model explains mathematically how the sensor–tissue system distorts the true signal, at rest and in
-          motion. A distortion you can write down is one you can separate out, rather than one that quietly corrupts
-          the number.</p>
+        <div class="meta">Sensors / Biosensors 2025 · Modeling</div>
+        <h3>Modeling the motion artifact</h3>
+        <div class="q">Where the distortion in a moving pulse signal comes from.</div>
+        <p>I developed an analytical model relating baseline drift and a newly defined set of time-varying system
+          parameters to the measured pulse. The model describes how the sensor-tissue system distorts the signal,
+          at rest and during motion, so the distortion can be characterized rather than only filtered.</p>
         <div class="tags"><span>Motion-artifact model</span><span>Time-varying system parameters</span><span>Baseline drift</span></div>
         <div class="figslot">Figure slot — add images/fig-artifact.jpg (model schematic or before/after signal)</div>
       </div>
 
       <div class="thread">
-        <div class="meta">2020–present · Dissertation · Signal processing</div>
-        <h3>Pulling parameters out of a nonstationary signal</h3>
-        <div class="q">How do you track arterial parameters that change beat to beat?</div>
-        <p>An arterial pulse is nonstationary — its harmonics move beat to beat — so ordinary spectral tools blur
-          exactly what matters. I develop MATLAB/Python pipelines built on EMD, complex demodulation, HVD, wavelet
-          transforms, and HHT, including hybrid masked EMD–HVD and CDM–HVD methods for instantaneous, beat-by-beat
-          parameter estimation. This is the core of my dissertation: recovering elasticity, viscosity, PWV, and
-          augmentation index as they change in time.</p>
+        <div class="meta">Dissertation · Signal processing</div>
+        <h3>Extracting parameters from a nonstationary signal</h3>
+        <div class="q">Tracking arterial parameters that change from beat to beat.</div>
+        <p>The arterial pulse is nonstationary, its harmonics change from beat to beat, so ordinary spectral tools
+          are limited. I developed MATLAB and Python pipelines using EMD, complex demodulation, HVD, wavelet
+          transforms, and HHT, including hybrid masked EMD–HVD and CDM–HVD methods, for beat-by-beat parameter
+          estimation. This is the core of my dissertation, estimating parameters such as elasticity, viscosity,
+          pulse wave velocity, and augmentation index over time.</p>
         <div class="tags"><span>EMD / HHT / HVD</span><span>Complex demodulation</span><span>Wavelets</span><span>Hybrid EMD–HVD</span></div>
         <figure><img src="images/fig-tfa.png" alt="Time-frequency analysis of an arterial pulse signal"><figcaption>Time-frequency decomposition of a nonstationary arterial pulse signal.</figcaption></figure>
       </div>
 
       <div class="thread">
-        <div class="meta">2021–present · IRB-approved · Clinical validation</div>
-        <h3>Proving it against the clinic</h3>
-        <div class="q">Do the sensor's numbers hold up against hospital instruments?</div>
-        <p>None of the above counts until it holds up against reference instruments on real patients. I design and
-          run IRB-approved human-subject studies — healthy volunteers, cardiac-rehabilitation patients at Sentara, a
-          heart-transplant case study — acquiring sensor data alongside Doppler ultrasound, tonometry, and blood
-          pressure, and validating derived parameters against those standards, including a multi-visit study of how
-          body composition (BMI) changes signal quality across radial and carotid sites.</p>
-        <div class="tags"><span>IRB / human subjects</span><span>REDCap</span><span>Clinical reference validation</span><span>Cardiac rehab cohort</span></div>
+        <div class="meta">IRB-approved · Clinical studies</div>
+        <h3>Testing the sensor in human-subject studies</h3>
+        <div class="q">Using the sensor and comparing it against clinical reference instruments.</div>
+        <p>I designed and ran IRB-approved human-subject studies with healthy participants and cardiac patients. In a
+          cardiac-rehabilitation study at Sentara Heart Hospital, I used the sensor and my signal-processing methods
+          to measure patients' arterial pulse before and after exercise across multiple visits. I also ran a study
+          across BMI groups, recording alongside Doppler ultrasound, applanation tonometry, and blood pressure, and a
+          validation study comparing sensor-derived parameters against these reference instruments is ongoing.</p>
+        <div class="tags"><span>IRB / human subjects</span><span>REDCap</span><span>Reference instruments</span><span>Cardiac rehab cohort</span></div>
         <div class="figslot">Figure slot — add images/fig-clinical.jpg (study setup or validation plot)</div>
       </div>
 
@@ -494,7 +480,7 @@
   <!-- PUBLICATIONS -->
   <section id="papers">
     <div class="wrap">
-      <div class="sec-top"><span class="sec-num">04</span><h2>Publications</h2><span class="sec-kick">6 + 2 preprints</span></div>
+      <div class="sec-top"><h2>Publications</h2><span class="sec-kick">6 + 2 preprints</span></div>
       <div class="pubfilter">
         <button data-f="all" class="active">All</button>
         <button data-f="journal">Journal</button>
@@ -686,14 +672,13 @@
   <!-- BUILD -->
   <section id="build">
     <div class="wrap">
-      <div class="sec-top"><span class="sec-num">05</span><h2>How it gets built and validated</h2><span class="sec-kick">Translation</span></div>
+      <div class="sec-top"><h2>How it gets built and validated</h2><span class="sec-kick">Translation</span></div>
       <div class="body" style="margin-bottom:20px">
-        <p>A sensor that only works on the bench has been demonstrated, not validated. My results are produced under
-          conditions that mirror real use: custom hardware, human-subject protocols, and comparison against the
-          clinical instruments a device would have to replace.</p>
+        <p>Beyond bench testing, the work was carried into human-subject studies: custom hardware, IRB-approved
+          protocols, and comparison against the clinical instruments used to measure the same parameters.</p>
       </div>
       <div class="build">
-        <div class="card"><h3>End-to-end device fabrication</h3><p>Every layer is built in-house: photolithographic electrodes, SU-8 and 3D-printed microchannel molds, PDMS casting and plasma bonding, and custom KiCad analog front-end PCBs. Owning the whole stack means a problem in the signal can be traced to the layer that caused it.</p></div>
+        <div class="card"><h3>End-to-end device fabrication</h3><p>The sensor was built in-house: photolithographic electrodes, SU-8 and 3D-printed microchannel molds, PDMS casting and plasma bonding, and custom KiCad analog front-end PCBs. Building each layer myself made it possible to trace a problem in the signal to the step that caused it.</p></div>
         <div class="card"><h3>Validation against clinical references</h3><p>Sensor-derived parameters — PWV, augmentation index, arterial elasticity — are checked against Doppler ultrasound, applanation tonometry, and brachial blood pressure on the same subjects, at rest and across six post-exercise time points.</p></div>
         <div class="card"><h3>Human-subject protocols &amp; governance</h3><p>IRB-approved studies with healthy volunteers, cardiac-rehabilitation patients at Sentara, and a heart-transplant case study; REDCap data management; CITI-certified in biomedical human-subjects research through 2029.</p><p class="note">Regulatory-compliant data handling is part of the method, not paperwork bolted on after.</p></div>
         <div class="card"><h3>Verification &amp; characterization</h3><p>Drafted and executed V&amp;V test protocols; characterized sensitivity, linearity, frequency response, and repeatability under controlled bench conditions before any clinical use.</p></div>
@@ -711,7 +696,7 @@
   <!-- TRAJECTORY -->
   <section id="trajectory">
     <div class="wrap">
-      <div class="sec-top"><span class="sec-num">06</span><h2>Where this goes</h2><span class="sec-kick">Forward view</span></div>
+      <div class="sec-top"><h2>Where this goes</h2><span class="sec-kick">Forward view</span></div>
       <div class="body" style="margin-bottom:4px"><p>What is established, what is running now, and what I would build next given my own lab or an R&amp;D team.</p></div>
       <div class="traj">
         <h3>Established</h3>
@@ -732,7 +717,7 @@
   <!-- CVs -->
   <section id="cvs">
     <div class="wrap">
-      <div class="sec-top"><span class="sec-num">07</span><h2>CV &amp; résumé, by destination</h2><span class="sec-kick">Pick one</span></div>
+      <div class="sec-top"><h2>CV &amp; résumé, by destination</h2><span class="sec-kick">Pick one</span></div>
       <div class="body" style="margin-bottom:6px"><p>My work spans research, teaching, and device development, so I keep a version tailored to each path. Open whichever matches what you're hiring for.</p></div>
       <div class="aud">
         <a href="docs/resume-industry.pdf" target="_blank" rel="noopener"><div class="role">Industry résumé</div><div class="desc">1–2 pages. Device development, microfabrication, electronics, V&amp;V, and regulatory/human-subjects experience for R&amp;D and medical-device roles.</div><div class="go">Open PDF →</div></a>
@@ -746,8 +731,9 @@
   <!-- EXPERIENCE -->
   <section id="experience">
     <div class="wrap">
-      <div class="sec-top"><span class="sec-num">08</span><h2>Experience</h2><span class="sec-kick">Timeline</span></div>
+      <div class="sec-top"><h2>Experience</h2><span class="sec-kick">Timeline</span></div>
       <div class="rowlist">
+        <div class="row"><span><b style="font-weight:700">Adjunct Assistant Professor</b> — Electrical Engineering Technology, Dept. of Engineering Technology, ODU<br><span style="color:var(--ink-mute);font-size:.88rem">Frank Batten College of Engineering &amp; Technology · undergraduate instruction</span></span><span class="w">2026–present</span></div>
         <div class="row"><span><b style="font-weight:700">Graduate Research Assistant</b> — Mechanical &amp; Aerospace Engineering, ODU<br><span style="color:var(--ink-mute);font-size:.88rem">NSF #1936005 · wearable cardiovascular sensing: fabrication, electronics, signal processing, clinical studies</span></span><span class="w">2019–2026</span></div>
         <div class="row"><span><b style="font-weight:700">Graduate Teaching Assistant</b> — Mechanical &amp; Aerospace Engineering, ODU<br><span style="color:var(--ink-mute);font-size:.88rem">Instructor of record, materials-science lab; TA across dynamics, mechanics, design</span></span><span class="w">2019–2025</span></div>
         <div class="row"><span><b style="font-weight:700">Lecturer</b> — Electronics &amp; Telecommunication Engineering, ADUST (Bangladesh)<br><span style="color:var(--ink-mute);font-size:.88rem">Developed and taught 14 undergraduate courses; supervised final-year projects</span></span><span class="w">2014–2017</span></div>
@@ -760,7 +746,7 @@
   <!-- TEACHING -->
   <section id="teaching">
     <div class="wrap">
-      <div class="sec-top"><span class="sec-num">09</span><h2>Teaching</h2><span class="sec-kick">6+ years</span></div>
+      <div class="sec-top"><h2>Teaching</h2><span class="sec-kick">6+ years</span></div>
       <div class="teach-cols">
         <div class="narr">
           <p>Six-plus years across engineering fundamentals — instrumentation, electronics, circuits, digital
@@ -810,7 +796,7 @@
   <!-- NEWS -->
   <section id="news">
     <div class="wrap">
-      <div class="sec-top"><span class="sec-num">10</span><h2>News</h2><span class="sec-kick">Recent</span></div>
+      <div class="sec-top"><h2>News</h2><span class="sec-kick">Recent</span></div>
       <div class="rowlist news">
         <div class="row"><div class="when">2026</div><div class="what">Heart-transplant case study accepted in <em>Medical Sensors &amp; Imaging</em> (IOP).</div></div>
         <div class="row"><div class="when">2026</div><div class="what">Two preprints on subject-specific cardiovascular signatures (Parts I &amp; II) posted, under review.</div></div>
@@ -824,7 +810,7 @@
   <!-- EDUCATION -->
   <section id="education">
     <div class="wrap">
-      <div class="sec-top"><span class="sec-num">11</span><h2>Education</h2><span class="sec-kick">Three degrees, two fields</span></div>
+      <div class="sec-top"><h2>Education</h2><span class="sec-kick">Three degrees, two fields</span></div>
       <div class="rowlist">
         <div class="row">
           <div>
@@ -856,11 +842,11 @@
   <!-- CONTACT -->
   <section id="contact" class="contact">
     <div class="wrap">
-      <div class="sec-top"><span class="sec-num">✦</span><h2>Let's talk.</h2><span class="sec-kick">On the market for 2026</span></div>
+      <div class="sec-top"><h2>Let's talk.</h2><span class="sec-kick">Open to new opportunities</span></div>
       <div class="body">
-        <p>I'm seeking positions starting in 2026 across industry R&amp;D, research, and academia — anywhere the work
-          is building trustworthy measurement for wearable and clinical health technology. If that's the kind of
-          problem you have, I'd like to hear about it.</p>
+        <p>I am an Adjunct Assistant Professor at Old Dominion University and open to research, industry R&amp;D, and
+          academic opportunities in wearable and clinical health technology. If that is the kind of work you have,
+          I would like to hear about it.</p>
         <p><a class="mail" href="mailto:mrahm009@odu.edu">mrahm009@odu.edu</a></p>
       </div>
       <div class="cols">
@@ -927,11 +913,6 @@
     img.onload=function(){img.style.display='block';ph.style.display='none';};
     img.onerror=function(){img.style.display='none';ph.style.display='block';};}
   scrub.addEventListener('input',updateFrame);updateFrame();
-  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    var pth=document.getElementById('ecg');
-    if(pth){var len=pth.getTotalLength();pth.style.strokeDasharray=len;pth.style.strokeDashoffset=len;
-      pth.animate([{strokeDashoffset:len},{strokeDashoffset:0}],{duration:2600,easing:'ease-out',fill:'forwards'});}
-  }
 </script>
 </body>
 </html>
